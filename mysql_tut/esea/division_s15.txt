@@ -1,0 +1,9 @@
+<form method="get" action="/index.php">
+<input type="hidden" name="s" value="league">
+<input type="hidden" name="d" value="standings">
+<optgroup label="Season 15">
+<option value="2182">TF2 Invite</option>
+<option value="2183">TF2 Main</option>
+<option value="2184">TF2 Intermediate</option>
+<option value="2185">TF2 Open</option>
+http://play.esea.net/index.php?s=league&d=standings&division_id=
