@@ -6,7 +6,12 @@ CREATE TABLE esea_team(
 	tID	INT(11)		NOT NULL	PRIMARY KEY
 	COMMENT 'Esea Team Id',
 	tName	VARCHAR(24)	NOT NULL
-	COMMENT 'Team Name'
+	COMMENT 'Team Name',
+	game   VARCHAR(5) NOT NULL
+	COMMENT 'Game',
+	league VARCHAR(14) NOT NULL
+	COMMENT 'League Name'
+	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

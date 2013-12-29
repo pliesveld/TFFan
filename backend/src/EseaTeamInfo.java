@@ -1,18 +1,32 @@
+import java.util.*;
 
-public class EseaTeamInfo {
-	public String division;
-	public String teamName;
-	public int teamId;
+public class EseaTeamInfo 
+{
+	String game;
+	String league;
+	Collection<EseaTeam> teamsArray;
 
-	public EseaTeamInfo(String div, String teamName, int id)
+	EseaTeamInfo(String game, String league)
 	{
-		this.division = div;
-		this.teamName = teamName;
-		this.teamId = id;
+		this.game = game;
+		this.league = league;
+		teamsArray  = new ArrayList<EseaTeam>(); 
 	}
-	
+
+	public void add(EseaTeam t)
+	{
+		teamsArray.add(t);
+	}
+
 	public String toString()
 	{
-		return "div: " + division + " team: " + teamName + " id: " + teamId;
+		StringBuilder result = new StringBuilder(1024);
+		result.append("game: ");
+		result.append(game);
+		result.append("league: ");
+		result.append(league);
+		result.append(teamsArray.toString());
+		return result.toString();
 	}
 }
+

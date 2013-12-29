@@ -5,14 +5,21 @@ public class EseaTeamRoster {
 	private String league;
 	private String teamName;
 	private String teamId;
+	private boolean isDead;
 	private ArrayList<EseaTeamRosterPlayerEntry> teamRoster;
 	
 
 	public EseaTeamRoster(String league, String teamName, String id)
 	{
+		this(league,teamName,id,false);
+	}
+
+	public EseaTeamRoster(String league, String teamName, String id, boolean isDead)
+	{
 		this.league = league;
 		this.teamName = teamName;
 		this.teamId = id;
+		this.isDead = isDead;
 		this.teamRoster = new ArrayList<EseaTeamRosterPlayerEntry>();
 	}
 	
@@ -30,7 +37,11 @@ public class EseaTeamRoster {
 		result.append(this.league);
 		result.append("\nTeam: ");
 		result.append(this.teamName);
-		result.append("(" + this.teamId + ")\n");
+		result.append("(" + this.teamId + ")");
+		if(isDead)
+			result.append("--Dead\n");
+		else
+			result.append("\n");
 		
 		for(EseaTeamRosterPlayerEntry e : this.teamRoster)
 		{

@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.File;
 import java.util.*;
 
 import org.jsoup.Jsoup;
@@ -9,60 +10,100 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public class ScrapeESEAMatch {
-	public static ESEAMatch fetch(String esea_team_id) {
-		Document doc;
+public class ScrapeESEAMatch extends ScrapePage {
+
+	public ScrapeESEAMatch()
+	{
+		super();
+	}
+
+	public ScrapeESEAMatch(String file_name)
+	{
+		super(file_name);
+	}
+
+	public ScrapeESEAMatch(File file)
+	{
+		super(file);
+	}
+
+
+	public EseaMatch fetch(String esea_match_id) {
 	    
-	    String url = "http://play.esea.net/index.php?s=stats&d=match&id=" + esea_team_id;
-		//String url = "http://localhost:32012/sample_match.html";
+	    String default_url = "http://play.esea.net/index.php?s=stats&d=match&id=" + esea_match_id;
 
-        ESEAMatch data = new ESEAMatch();
+        EseaMatch data = new EseaMatch();
 	    try {
-//	    	String default_url = "http://play.esea.net/index.php";
-//	    	Map<String, String> cookies = Jsoup.connect(default_url).execute().cookies();
 
-	        doc = Jsoup.connect(url)
-	        		//.cookies(cookies)
-	        		.referrer(url).get();
-
+			if(doc == null)
+	        doc = Jsoup.connect(default_url)
+	        		.cookies(cookies)
+	        		.referrer(default_url).get();
 
 
-	        Elements match_header = ScrapeUtility.validateSelect(doc, "div.match-header h1");
+			Elements match_page = ScrapeUtility.validateSelect(doc, "div#layout-column-center");
+			
+	        Elements match_status = ScrapeUtility.validateSelect(match_page, "div.module-header:first-child");
+	        
+	        
+	        String status_str = match_status.first().ownText(); 
+
+	        Elements match_header = ScrapeUtility.validateSelect(match_page, "div#stats-match-view div.match-header > h1");
 	        
 	        Element match_home_team = ScrapeUtility.validateSelect(match_header,"a[href^=/teams/").first();
 	        Element match_away_team = ScrapeUtility.validateSelect(match_header,"a + a[href^=/teams/").first();
-	        
-	        data.match_id = esea_team_id;
+
+	        data.match_id = esea_match_id;
 	        data.match_team_home = new String(match_home_team.text());
 	        data.match_team_away = new String(match_away_team.text());
 	        
-	        data.match_team_home_id = ScrapeUtility.fetchAttrName(match_home_team);
-	        data.match_team_away_id = ScrapeUtility.fetchAttrName(match_away_team);
+	        data.match_team_home_id = ScrapeUtility.fetchAttrHrefAsInt(match_home_team);
+	        data.match_team_away_id = ScrapeUtility.fetchAttrHrefAsInt(match_away_team);
+	        
+
+	        if(status_str.contains("Forfeit"))
+	        {
+	        	data.status = MatchStatus.FORFEIT;
+	        	return data;
+	        } else if(!status_str.contains("Completed")) {
+	        	data.status = MatchStatus.SCRAPE_ERROR;
+	        	throw new ScrapeException("Unknown module-header: " + status_str);
+	        } else {
+	        	data.status = MatchStatus.COMPLETED;
+	        }
+	        
+	        
 	        
 	        Elements match_stats = ScrapeUtility.validateSelect(doc,"div#body-match-stats.tabContent > table.box");
 	        
+	        
+	        if(match_stats.size() != 4)
+	        	throw new ScrapeException("Invalid stats table.");
+
 	        assert match_stats.size() == 4;
 	        
-	        scrape_match_header(match_stats.get(0),data);
+	   //     scrape_match_header(match_stats.get(0),data);
 	        scrape_match_awards(match_stats.get(1),data);
 	
-	        ESEAStatsHeader stats_header = scrape_match_stats_header(match_stats.get(2));
+	 //       ESEAStatsHeader stats_header = scrape_match_stats_header(match_stats.get(2));
 	        
-	        ESEAMatchStats m_stats = scrape_match_team_stats(match_stats.get(2));
-	        data.match_team_home_stats = m_stats;
-	        m_stats = scrape_match_team_stats(match_stats.get(3));
-	        data.match_team_away_stats = m_stats;
+	        EseaMatchStats player_stats = new EseaMatchStats();   
+	        player_stats.addAll(scrape_match_team_stats(match_stats.get(2)));
+	        player_stats.addAll(scrape_match_team_stats(match_stats.get(3));
+	        
+	        data.match_team_home_stats = player_stats;
+
 	        
 	        data.match_header = match_header.first().ownText();
 
 
 	        //System.out.println(stats_header);
-	    	//System.out.println(data.match_team_home_stats);
+	    	System.out.println(data.match_team_home_stats);
 	    	//System.out.println(data.match_team_away_stats);
 	        //System.out.println(data.toString());
 	    } catch (ScrapeException|IOException e) {
 	            e.printStackTrace();
-	            return null;
+	            data = null;
 	    }
 	    return data;
 	    
@@ -70,18 +111,19 @@ public class ScrapeESEAMatch {
 
 	
 	
-	static void scrape_match_header(Element elem, ESEAMatch match)
+	static void scrape_match_header(Element elem, EseaMatch match)
 	{
 	//	System.out.println("match_header:" + elem.text());
 	}
 	
-    static void scrape_match_awards(Element elem, ESEAMatch match) throws ScrapeException
+    static void scrape_match_awards(Element elem, EseaMatch match) throws ScrapeException
     {
     	Map<String,String> match_awards = new TreeMap<String,String>();
     	Elements award_name = ScrapeUtility.validateSelect(elem,"tbody tr th acronym");
     	Elements awarded_player = ScrapeUtility.validateSelect(elem,"tbody tr td a + a");
     	
-    	assert award_name.size() == awarded_player.size();
+    	if(award_name.size() != awarded_player.size())
+    		throw new ScrapeException("failed to players in player awards table.");
 
     	int size = award_name.size();
 
@@ -110,9 +152,9 @@ public class ScrapeESEAMatch {
     	return result;
     }
     
-    static ESEAMatchStats scrape_match_team_stats(Element elem) throws ScrapeException
+    static void scrape_match_team_stats(Element elem, EseaMatchStats match_stats) throws ScrapeException
     {
-    	ESEAMatchStats match_stats = new ESEAMatchStats();
+    	
     	
     	Elements player_table = ScrapeUtility.validateSelect(elem,"thead + tbody + tbody > tr");
 
@@ -121,7 +163,7 @@ public class ScrapeESEAMatch {
         	Element player_name_node = ScrapeUtility.validateSelect(e,"td a + a[href^=/users/").first();
         	
         	String player_name = player_name_node.ownText();
-        	int player_name_id = ScrapeUtility.fetchAttrName(player_name_node);
+        	int player_name_id = ScrapeUtility.fetchAttrHrefAsInt(player_name_node);
         	
     		Elements player_stats = ScrapeUtility.validateSelect(e,"td.stat");
     		
@@ -137,72 +179,11 @@ public class ScrapeESEAMatch {
     	}
     	
 
-    
-    	return match_stats;
     }
 
 }
 
-class ESEAMatchStats
-{
-	Map<EseaPlayer, Collection<String> > player_stats;
-	public ESEAMatchStats()
-	{
-		player_stats = new HashMap<EseaPlayer, Collection<String>>();
-	}
-	
-	public void addPlayer(String p_name, int p_id, Collection<String> p_stats)
-	{
-		EseaPlayer p = new EseaPlayer(p_name, p_id);
-		player_stats.put(p,p_stats);
-	}
-	
-	public String toString()
-	{
-		StringBuffer result = new StringBuffer(512);
-		if(player_stats != null)
-			for(Map.Entry<EseaPlayer, Collection<String>> pstats : player_stats.entrySet())
-			{
-				result.append(pstats.getKey() + ": " + pstats.getValue() + "\n");
-			}
-		return result.toString();
-	}
-}
 
-class ESEAMatch
-{
-	String match_id;
-	String match_header;
-	int match_team_home_id;
-	int match_team_away_id;
-	String match_team_home;
-	String match_team_away;
-	
-	ESEAMatchStats match_team_home_stats;
-	ESEAMatchStats match_team_away_stats;
-	
-	Map<String,String> match_awards;
-	
-	public String toString()
-	{
-		StringBuffer sb = new StringBuffer(512);
-		sb.append("match #" + match_id)
-		.append("\nhome: " + match_team_home + "(" + match_team_home_id +")")
-		.append("\naway: " + match_team_away + "(" + match_team_away_id + ")")
-		.append("\noutcome:" + match_header + "\n");
-
-		if(match_awards != null)
-			for(Map.Entry<String, String> award : match_awards.entrySet())
-			{
-				sb.append(award.getKey() + ": " + award.getValue() + "\n");
-			}
-	
-		sb.append(match_team_home_stats);
-		sb.append(match_team_away_stats);
-		return sb.toString();
-	}
-	
-}
 
 class ESEAStatsHeader
 {

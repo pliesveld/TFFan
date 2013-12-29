@@ -5,12 +5,38 @@ import org.jsoup.select.Elements;
 
 
 public class ScrapeUtility {
-	static int fetchAttrName(Element n) throws ScrapeException
+
+	static public class ESEA
+	{
+		static String validateLeagueHeader(Document doc) throws ScrapeException
+		{
+			Elements league = ScrapeUtility.validateSelect(doc,"div#league-standings div h1");
+			if(league.size() != 1)
+				throw new ScrapeException("Unexpected league size " + league.size());
+			String league_str = league.first().text().substring(3);
+
+
+			if(!league_str.startsWith("TF2")
+				&& !league_str.startsWith("CS: GO")
+				&& !league_str.startsWith("CS 1.6"))
+				throw new ScrapeException("Invalid league header: " + league_str);
+
+			return league_str;
+		}
+
+	}
+
+	static int fetchAttrHrefAsInt(Element n) throws ScrapeException
+	{
+		return fetchAttrHrefAsInt(n,7);
+	}
+
+	static int fetchAttrHrefAsInt(Element n, int offset) throws ScrapeException
 	{
 		if(!n.hasAttr("href"))
 			throw new ScrapeException("Expected element to have href attribute." + n);
 		try {
-			String href_attr = n.attr("href").substring(7);
+			String href_attr = n.attr("href").substring(offset);
 			int result = Integer.parseInt(href_attr);
 			return result;
 		} catch(IndexOutOfBoundsException|NumberFormatException e) {
@@ -21,22 +47,33 @@ public class ScrapeUtility {
 	static Elements validateSelect(Elements e, String cssQuerry) throws ScrapeException
 	{
 		Elements result;
-		if((result = e.select(cssQuerry)) == null)
+		if((result = e.select(cssQuerry)) == null || result.size() == 0)
 			throw new ScrapeException("select " + cssQuerry + " expected to be matched " + e);
 		return result;
 	}
 	static Elements validateSelect(Document e, String cssQuerry) throws ScrapeException
 	{
 		Elements result;
-		if((result = e.select(cssQuerry)) == null)
-			throw new ScrapeException("select " + cssQuerry + " expected to be matched " + e);
+		if((result = e.select(cssQuerry)) == null || result.size() == 0)
+			throw new ScrapeException("select " + cssQuerry + " expected to be matched ");
 		return result;
 	}
 	static Elements validateSelect(Element e, String cssQuerry) throws ScrapeException
 	{
 		Elements result;
-		if((result = e.select(cssQuerry)) == null)
-			throw new ScrapeException("select " + cssQuerry + " expected to be matched " + e);
+		if((result = e.select(cssQuerry)) == null || result.size() == 0)
+			throw new ScrapeException("select " + cssQuerry + " expected to be matched." + e);
 		return result;
+	}
+
+
+	static Element validateSingleSelect(Document e, String cssQuerry) throws ScrapeException
+	{
+		Elements result;
+		if((result = e.select(cssQuerry)) == null || result.first() == null)
+			throw new ScrapeException("select " + cssQuerry + " expected to be matched.");
+
+
+		return result.first();
 	}
 }

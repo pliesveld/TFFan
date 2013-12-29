@@ -1,4 +1,5 @@
 import java.lang.*;
+
 public class EseaPlayer {
 	private String name;
 	private int id;
@@ -13,6 +14,7 @@ public class EseaPlayer {
 		return id;
 	}
 	
+/*
 	public boolean equals(Object other)
 	{
 		if(other instanceof EseaPlayer) {
@@ -27,7 +29,7 @@ public class EseaPlayer {
 						(this.id == otherPlayer.id ||
 							( this.id != null && otherPlayer.id != null &&
 								this.id.equals(otherPlayer.id))) 
-					);*/
+					);
 		} else if(other instanceof String){
 			try {
 				int id = Integer.parseInt((String)other);
@@ -39,7 +41,7 @@ public class EseaPlayer {
 		}
 		return false;
 	}
-	
+	*/
 	public String toString()
 	{
 		return this.name + "(" + this.id + ")";

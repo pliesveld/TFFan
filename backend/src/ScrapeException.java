@@ -1,6 +1,6 @@
 
 class ScrapeException extends Exception {
-	long serialVersionUid;
+	private  static final long serialVersionUid = 1L;
 	
 	public ScrapeException() {
 		// TODO Auto-generated constructor stub
