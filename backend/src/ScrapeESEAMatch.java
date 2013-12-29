@@ -87,11 +87,12 @@ public class ScrapeESEAMatch extends ScrapePage {
 	
 	 //       ESEAStatsHeader stats_header = scrape_match_stats_header(match_stats.get(2));
 	        
-	        EseaMatchStats player_stats = new EseaMatchStats();   
-	        player_stats.addAll(scrape_match_team_stats(match_stats.get(2)));
-	        player_stats.addAll(scrape_match_team_stats(match_stats.get(3));
+	        EseaMatchStats match = new EseaMatchStats();   
+
+	        match.player_stats.putAll(scrape_match_team_stats(match_stats.get(2)));
+	        match.player_stats.putAll(scrape_match_team_stats(match_stats.get(3)));
 	        
-	        data.match_team_home_stats = player_stats;
+	        data.match_team_home_stats = match;
 
 	        
 	        data.match_header = match_header.first().ownText();
@@ -152,9 +153,10 @@ public class ScrapeESEAMatch extends ScrapePage {
     	return result;
     }
     
-    static void scrape_match_team_stats(Element elem, EseaMatchStats match_stats) throws ScrapeException
+    static Map<EseaPlayer, Collection<String>> scrape_match_team_stats(Element elem) throws ScrapeException
     {
     	
+	Map<EseaPlayer,Collection<String>> result = new HashMap();
     	
     	Elements player_table = ScrapeUtility.validateSelect(elem,"thead + tbody + tbody > tr");
 
@@ -174,11 +176,14 @@ public class ScrapeESEAMatch extends ScrapePage {
     			player_stats_array.add(stat.ownText());
     		}
     		
-    		match_stats.addPlayer(player_name,player_name_id,player_stats_array);
+		EseaPlayer p = new EseaPlayer(player_name,player_name_id);
+		result.put(p,player_stats_array);
+    		//match_stats.addPlayer(player_name,player_name_id,player_stats_array);
 
     	}
     	
 
+	return result;
     }
 
 }
