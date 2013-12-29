@@ -16,9 +16,9 @@ public class EseaTeamRoster {
 		this.teamRoster = new ArrayList<EseaTeamRosterPlayerEntry>();
 	}
 	
-	public void addPlayer(String name, String id)
+	public void addPlayer(String name, int player_id)
 	{
-		EseaTeamRosterPlayerEntry e = new EseaTeamRosterPlayerEntry(name,id);
+		EseaTeamRosterPlayerEntry e = new EseaTeamRosterPlayerEntry(name,player_id);
 		teamRoster.add(e);
 	}
 	
@@ -44,13 +44,13 @@ public class EseaTeamRoster {
 class EseaTeamRosterPlayerEntry
 {
 	private String name;
-	private String id;
+	private int id;
 	
-	public EseaTeamRosterPlayerEntry(String name, String id)
+	public EseaTeamRosterPlayerEntry(String name, int player_id)
 	{
 		this.name = name;
-		this.id = id;
+		this.id = player_id;
 	}
 	public String getName() { return this.name; }
-	public String getId()   { return this.id; }
+	public int getId()   { return this.id; }
 }

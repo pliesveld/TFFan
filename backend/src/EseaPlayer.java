@@ -1,23 +1,24 @@
 import java.lang.*;
 public class EseaPlayer {
 	private String name;
-	private String id;
+	private int id;
 	
-	public EseaPlayer(String name, String id) {
+	public EseaPlayer(String name, int id) {
 		this.name = name;
 		this.id = id;
 	}
 	
 	public int hashCode()
 	{
-		return id.hashCode();
+		return id;
 	}
 	
 	public boolean equals(Object other)
 	{
 		if(other instanceof EseaPlayer) {
 			EseaPlayer otherPlayer = (EseaPlayer) other;
-			return
+			return this.id == otherPlayer.id;
+					/*
 					(
 						(this.name == otherPlayer.name ||
 							( this.name != null && otherPlayer.name != null &&
@@ -26,11 +27,11 @@ public class EseaPlayer {
 						(this.id == otherPlayer.id ||
 							( this.id != null && otherPlayer.id != null &&
 								this.id.equals(otherPlayer.id))) 
-					);
+					);*/
 		} else if(other instanceof String){
 			try {
-				Integer.parseInt((String)other);
-				return (this.id == other || (this.id != null && other != null && this.id.equals(other)));
+				int id = Integer.parseInt((String)other);
+				return (this.id == id );
 			} catch( NumberFormatException nfe) {
 				String otherPlayer = (String) other;
 				return this.name == otherPlayer || this.name != null && otherPlayer != null && this.name.equals(otherPlayer);
@@ -45,8 +46,8 @@ public class EseaPlayer {
 	}
 	
 	public String getName() { return this.name;          }
-	public String getId()   { return this.id;            }
+	public int getId()   { return this.id;            }
 	
 	public void setName(String name) { this.name = name; }
-	public void setId(String id)     { this.id = id;     }
+	public void setId(int id)     { this.id = id;     }
 }

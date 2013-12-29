@@ -1,0 +1,4 @@
+
+enum MatchStatus {
+	TBD, UPCOMING, LIVE, COMPLETED, FORFEIT, SCRAPE_ERROR
+}

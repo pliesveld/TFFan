@@ -2,9 +2,9 @@
 public class EseaTeamInfo {
 	public String division;
 	public String teamName;
-	public String teamId;
+	public int teamId;
 
-	public EseaTeamInfo(String div, String teamName, String id)
+	public EseaTeamInfo(String div, String teamName, int id)
 	{
 		this.division = div;
 		this.teamName = teamName;

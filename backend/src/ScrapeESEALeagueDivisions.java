@@ -21,20 +21,17 @@ public class ScrapeESEALeagueDivisions {
             		//.cookies(cookies)
             		.referrer(url).get();
 
-            Elements team_table = doc.select("div#league-standings table tbody");
-            
-            Elements team_row = team_table.select("tr.row1,tr.row2");
-            
-            Elements team_info = team_row.select("td a[href^=/teams/");
+            Elements team_table = ScrapeUtility.validateSelect(doc,"div#league-standings table tbody");            
+            Elements team_row = ScrapeUtility.validateSelect(team_table,"tr.row1,tr.row2");
+            Elements team_info = ScrapeUtility.validateSelect(team_row,"td a[href^=/teams/");
             
             for(Element team : team_info)
             {
-            	String href_attr = team.attr("href").substring(7);	            	
-            	EseaTeamInfo data = new EseaTeamInfo(division_category,team.text(),href_attr);
-            	teamsArray.add(data);
+            	int team_id = ScrapeUtility.fetchAttrName(team);		            	
+            	teamsArray.add(new EseaTeamInfo(division_category,team.text(),team_id));
             }
 
-        } catch (IOException e) {
+        } catch (IOException|ScrapeException e) {
                 e.printStackTrace();
                 return null;
         }
