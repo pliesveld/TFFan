@@ -35,7 +35,7 @@ public class Sample
             statement.executeUpdate("drop table if exists esea_schedule");
             statement.executeUpdate("create table esea_schedule (mID INT(11) NOT NULL PRIMARY KEY, tID_home NOT NULL, tID_away NOT NULL, map VARCHAR(14) NOT NULL, score_home INT DEFAULT NULL, score_away INT DEFAULT NULL)");
  
-            statement.execute("drop table if exists esea_match");
+            statement.executeUpdate("drop table if exists esea_match");
             statement.executeUpdate("CREATE TABLE esea_match(   mID   INT(11)     NOT NULL,   pID   INT(11)     NOT NULL,   stat_P      INT   DEFAULT 0,  stat_PPM REAL     DEFAULT 0.0,   stat_DMG INT   DEFAULT 0,     stat_DDM REAL     DEFAULT 0.0,   stat_F      INT   DEFAULT 0,  stat_FPM REAL     DEFAULT  0.0,  stat_A      INT   DEFAULT  0, stat_APM REAL     DEFAULT 0.0,   stat_D      INT   DEFAULT 0,  stat_DPM REAL     DEFAULT 0.0,   stat_CPC INT   DEFAULT 0,  stat_CPB INT   DEFAULT 0,  stat_DOM INT   DEFAULT 0,  stat_REV INT   DEFAULT 0,  stat_UC  INT   DEFAULT 0,  stat_UCD INT   DEFAULT 0 )");
             /*
               statement.executeUpdate("insert into person values(1, 'leo')");
