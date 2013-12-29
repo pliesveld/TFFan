@@ -156,7 +156,7 @@ public class ScrapeESEAMatch extends ScrapePage {
     static Map<EseaPlayer, Collection<String>> scrape_match_team_stats(Element elem) throws ScrapeException
     {
     	
-	Map<EseaPlayer,Collection<String>> result = new HashMap();
+	Map<EseaPlayer,Collection<String>> result = new HashMap<EseaPlayer,Collection<String>>();
     	
     	Elements player_table = ScrapeUtility.validateSelect(elem,"thead + tbody + tbody > tr");
 
