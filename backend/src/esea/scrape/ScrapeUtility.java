@@ -1,3 +1,4 @@
+package esea.scrape;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,6 +26,16 @@ public class ScrapeUtility {
 		}
 
 	}
+	
+	static int parseInt(String arg) throws ScrapeException
+	{
+		try {
+			int result = Integer.parseInt(arg);
+			return result;
+		} catch(IndexOutOfBoundsException|NumberFormatException e) {
+			throw new ScrapeException("invalid integer:" + arg);
+		}
+	}
 
 	static int fetchAttrHrefAsInt(Element n) throws ScrapeException
 	{
@@ -37,9 +48,9 @@ public class ScrapeUtility {
 			throw new ScrapeException("Expected element to have href attribute." + n);
 		try {
 			String href_attr = n.attr("href").substring(offset);
-			int result = Integer.parseInt(href_attr);
+			int result = parseInt(href_attr);
 			return result;
-		} catch(IndexOutOfBoundsException|NumberFormatException e) {
+		} catch(IndexOutOfBoundsException e) {
 			throw new ScrapeException("invalid integer attribute:" + n.attr("href"),e);
 		}
 	}

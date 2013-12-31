@@ -1,11 +1,15 @@
+package esea.scrape;
 import java.io.IOException;
 import java.io.File;
-
 import java.util.*;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import esea.EseaTeam;
+import esea.EseaTeamInfo;
 
 
 public class ScrapeESEALeagueDivisions extends ScrapePage {

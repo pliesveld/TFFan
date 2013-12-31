@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
 
+import esea.EseaTeamInfo;
+import esea.scrape.ScrapeESEALeagueDivisions;
+
 public class ScrapeLeagueTestApp
 {
 	public static void main(String[] args)
@@ -10,6 +13,7 @@ public class ScrapeLeagueTestApp
 
 		try {
 			db_store = new Sample();
+			db_store.createTables();
 		} catch(ClassNotFoundException e) {
 			System.err.println("Couldn't find database driver" + e.getMessage());
 			System.exit(2);
@@ -32,8 +36,6 @@ public class ScrapeLeagueTestApp
 			EseaTeamInfo teams = page.fetch(fName);
 			db_store.insertTeam(teams);
 
-			for(EseaTeam team : teams.teamsArray)
-				System.out.printf("curl -o %d.html \"http://play.esea.net/teams/%d\"\n",team.teamId, team.teamId);
 		}
 	}
 }

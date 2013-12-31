@@ -1,20 +1,36 @@
+package esea;
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class EseaTeamRoster {
 	private String league;
 	private String teamName;
-	private String teamId;
+	private int teamId;
 	private boolean isDead;
-	private ArrayList<EseaTeamRosterPlayerEntry> teamRoster;
+	private Collection<EseaTeamRosterPlayerEntry> teamRoster;
+
+	public class EseaTeamRosterPlayerEntry
+	{
+		private String name;
+		private int id;
+		
+		public EseaTeamRosterPlayerEntry(String name, int player_id)
+		{
+			this.name = name;
+			this.id = player_id;
+		}
+		public String getName() { return this.name; }
+		public int getId()   { return this.id; }
+	}
 	
 
-	public EseaTeamRoster(String league, String teamName, String id)
+	public EseaTeamRoster(String league, String teamName, int id)
 	{
 		this(league,teamName,id,false);
 	}
 
-	public EseaTeamRoster(String league, String teamName, String id, boolean isDead)
+	public EseaTeamRoster(String league, String teamName, int id, boolean isDead)
 	{
 		this.league = league;
 		this.teamName = teamName;
@@ -27,6 +43,11 @@ public class EseaTeamRoster {
 	{
 		EseaTeamRosterPlayerEntry e = new EseaTeamRosterPlayerEntry(name,player_id);
 		teamRoster.add(e);
+	}
+	
+	public Collection<EseaTeamRosterPlayerEntry> getRoster()
+	{
+		return teamRoster;
 	}
 	
 	public String toString()
@@ -50,18 +71,10 @@ public class EseaTeamRoster {
 		
 		return result.toString();
 	}
+
+	public int getTeamId() {
+		return teamId;
+	}
 }
 
-class EseaTeamRosterPlayerEntry
-{
-	private String name;
-	private int id;
-	
-	public EseaTeamRosterPlayerEntry(String name, int player_id)
-	{
-		this.name = name;
-		this.id = player_id;
-	}
-	public String getName() { return this.name; }
-	public int getId()   { return this.id; }
-}
+

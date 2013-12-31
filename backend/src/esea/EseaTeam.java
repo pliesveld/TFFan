@@ -1,3 +1,4 @@
+package esea;
 import java.util.*;
 
 public class EseaTeam {

@@ -1,3 +1,4 @@
+package esea;
 import java.lang.*;
 
 public class EseaPlayer {

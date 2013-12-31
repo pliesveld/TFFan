@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
 
+import esea.EseaMatch;
+import esea.scrape.ScrapeESEAMatch;
+
 public class ScrapeMatchTestApp {
 	
    public static void main(String[] args)
@@ -10,6 +13,7 @@ public class ScrapeMatchTestApp {
 	
 	  try {
 	     db_store = new Sample();
+	     db_store.createTables();
 	  } catch(ClassNotFoundException e) {
 	     System.err.println("Couldn't find database driver" + e.getMessage());
 	     System.exit(2);

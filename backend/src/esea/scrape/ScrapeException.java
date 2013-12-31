@@ -1,6 +1,7 @@
+package esea.scrape;
 
-class ScrapeException extends Exception {
-	private  static final long serialVersionUid = 1L;
+public class ScrapeException extends Exception {
+	private  static final long serialVersionUID = 1L;
 	
 	public ScrapeException() {
 		// TODO Auto-generated constructor stub
