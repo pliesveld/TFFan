@@ -1,8 +1,11 @@
 package esea.scrape;
-import java.util.Map;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import org.jsoup.Connection;
+import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,12 +21,9 @@ public abstract class ScrapePage
 
 	ScrapePage()
 	{
-		try {
-			cookies = Jsoup.connect(default_url).execute().cookies();
-		//	System.out.println("ScrapePage()" + cookies.toString());
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+
+		(cookies = new TreeMap<String,String>()).put("viewed_welcome_page", "1"); 
+
 	}
 
 	public Map<String,String> getCookies()
@@ -33,28 +33,32 @@ public abstract class ScrapePage
 	
 	Document open(String url) throws IOException
 	{
-		//http://play.esea.net/users/529573?tab=stats&last_type_scope=league&game_id=43&type_scope=league&period[type]=seasons
- 
-		return Jsoup.connect(url)
-			.cookies(cookies)
-			//.cookie("viewed_welcome_page", "1")
-			.get();
+		Connection result = Jsoup.connect(url)
+			.cookie("viewed_welcome_page", "1");
+		
+		System.err.println("Request Headers\n" + result.request().headers());
+		Response response = result.execute();
 
+		System.err.println("HTTP STATUS " + response.statusCode());
+		System.err.println("Response Headers\n" + response.headers());
+		return doc = response.parse();
+		
+		
 	}
 	
-	ScrapePage(String filename)
+	ScrapePage(String filename) throws ScrapeException
 	{
 		this(new File(filename));
 	}
 
-	ScrapePage(File input)
+	ScrapePage(File input) throws ScrapeException
 	{
 
 		System.out.println("ScrapePage(" + input.getName() + ")");
 		try {
 			doc = Jsoup.parse(input,"UTF-8", "file:// " + input.getName());
 		} catch(IOException e) {
-			e.printStackTrace();
+			throw new ScrapeException("Couldn't load document from file: " + input.getPath(), e);
 		}
 	}
 

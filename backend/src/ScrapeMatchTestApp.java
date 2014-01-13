@@ -3,16 +3,18 @@ import java.util.*;
 
 import esea.EseaMatch;
 import esea.scrape.ScrapeESEAMatch;
+import esea.scrape.ScrapeException;
+import esea.store.*;
 
 public class ScrapeMatchTestApp {
 	
    public static void main(String[] args)
    {
 	
-	  Sample db_store = null;
+	  Storage db_store = null;
 	
 	  try {
-	     db_store = new Sample();
+	     db_store = new MySQL();
 	     db_store.createTables();
 	  } catch(ClassNotFoundException e) {
 	     System.err.println("Couldn't find database driver" + e.getMessage());
@@ -29,12 +31,16 @@ public class ScrapeMatchTestApp {
 	        continue;
 	     }
 	
-	     ScrapeESEAMatch page = new ScrapeESEAMatch(file);
-	     String fName = file.getName();
-	     fName = fName.substring(0,fName.indexOf('.'));
-	     EseaMatch teams = page.fetch(fName);
-	     if(teams != null)
-	    	 db_store.insertMatch(teams);
+	     try {
+	    	 ScrapeESEAMatch page = new ScrapeESEAMatch(file);
+	    	 String fName = file.getName();
+	    	 fName = fName.substring(0,fName.indexOf('.'));
+	    	 EseaMatch teams = page.fetch(fName);
+	    	 if(teams != null)
+	    		 db_store.insertMatch(teams);
+	     } catch(ScrapeException e) {
+	    	 System.err.println(e.getMessage());
+	     }
 	  }
    }
 }

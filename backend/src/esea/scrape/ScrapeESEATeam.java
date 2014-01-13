@@ -15,39 +15,27 @@ import esea.EseaTeamSchedule.EseaScheduleEvent;
 
 public class ScrapeESEATeam extends ScrapePage {
 
-	public ScrapeESEATeam(File file)
+	public ScrapeESEATeam(File file) throws ScrapeException
 	{
 		super(file);
 	}
 
-	public EseaTeamPage fetch(String esea_team_id)
+	public void fetch(String esea_team_id) throws ScrapeException
 	{
-		EseaTeamPage result = new EseaTeamPage();
 		String url = "http://play.esea.net/teams/" + esea_team_id;
-
-		try {
 			try {
-				if( doc == null )
-					doc = Jsoup.connect(url).cookies(cookies).referrer(url).get();
+				open(url);
 			} catch(IOException e) {
-				e.printStackTrace();
-				result = null;
-			}
-			result.schedule = fetch_schedule(esea_team_id);
-			result.roster = fetch_roster(esea_team_id);			
-		} catch(ScrapeException e)
-		{
-			System.err.println("Failed to scrape team #" +esea_team_id + " reason: " + e.getMessage());
-			result = null;
-		}
-
-		return result;
+				throw new ScrapeException("Unable to retrieve esea team page: " + e.getMessage());
+//				e.printStackTrace();
+			}			
 	}
 
 	public EseaTeamSchedule fetch_schedule(String esea_team_id) throws ScrapeException 
 	{
 		EseaTeamSchedule result = null;
-
+		fetch(esea_team_id);
+		
 		Elements team_table = ScrapeUtility.validateSelect(doc,"div#profile-content div.tabContent table tbody tr.row1:gt(1)");
 
 		for( Element team_match : team_table )
@@ -120,8 +108,9 @@ public class ScrapeESEATeam extends ScrapePage {
 	public EseaTeamRoster fetch_roster(String esea_team) throws ScrapeException 
 	{
 		boolean isDead = false;
-
 		int esea_team_id = ScrapeUtility.parseInt(esea_team);
+		fetch(esea_team);
+
 
 		Element team_name, league_name;
 		Elements roster_table, team_row, player_roster_table; 

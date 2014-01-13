@@ -1,24 +1,27 @@
 import java.io.*;
+import java.sql.SQLException;
 import java.util.*;
 
 import esea.EseaTeamInfo;
 import esea.scrape.ScrapeESEALeagueDivisions;
+import esea.scrape.ScrapeException;
+import esea.store.*;
 
 public class ScrapeLeagueTestApp
 {
 	public static void main(String[] args)
 	{
 
-		Sample db_store = null;
+		Storage db_store = null;
 
 		try {
-			db_store = new Sample();
-			db_store.createTables();
+			db_store = new MySQL();
+			db_store.createTables(true);
 		} catch(ClassNotFoundException e) {
 			System.err.println("Couldn't find database driver" + e.getMessage());
 			System.exit(2);
 		}
-
+		
 		int i = 0;
 		for(String arg : args)
 		{
@@ -29,12 +32,17 @@ public class ScrapeLeagueTestApp
 				continue;
 			}
 
-			ScrapeESEALeagueDivisions page = new ScrapeESEALeagueDivisions(file);
-			String fName = file.getName();
-			fName = fName.substring(0,fName.indexOf('.'));
+			try {
+				ScrapeESEALeagueDivisions page = new ScrapeESEALeagueDivisions(file);
+				String fName = file.getName();
+				fName = fName.substring(0,fName.indexOf('.'));
 
-			EseaTeamInfo teams = page.fetch(fName);
-			db_store.insertTeam(teams);
+				EseaTeamInfo teams = page.fetch(fName);
+				if(teams != null)
+					db_store.insertTeam(teams);
+			} catch(ScrapeException e) {
+				System.err.println(e.getMessage());
+			}
 
 		}
 	}

@@ -5,16 +5,17 @@ import esea.EseaTeamRoster;
 import esea.EseaTeamSchedule;
 import esea.scrape.ScrapeESEATeam;
 import esea.scrape.ScrapeException;
+import esea.store.*;
 
 public class ScrapeScheduleTestApp
 {
 	public static void main(String[] args)
 	{
 
-		Sample db_store = null;
+		Storage db_store = null;
 
 		try {
-			db_store = new Sample();
+			db_store = new MySQL();
 			db_store.createTables();
 		} catch(ClassNotFoundException e) {
 			System.err.println("Couldn't find database driver" + e.getMessage());
@@ -31,32 +32,33 @@ public class ScrapeScheduleTestApp
 				continue;
 			}
 
-			ScrapeESEATeam team_page = new ScrapeESEATeam(file);
-			String fName = file.getName();
-			fName = fName.substring(0,fName.indexOf('.'));
-
-			//		EseaTeamPage teamPage = team_page.fetch(fName);
-			EseaTeamRoster roster = null;
 			try {
-				roster = team_page.fetch_roster(fName);
-			} catch (ScrapeException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			EseaTeamSchedule schedule = null;
-			try {
-				schedule = team_page.fetch_schedule(fName);
-			} catch (esea.scrape.ScrapeException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				ScrapeESEATeam team_page = new ScrapeESEATeam(file);
+				String fName = file.getName();
+				fName = fName.substring(0,fName.indexOf('.'));
 
-			if(roster != null)
-			{
-				db_store.insertRoster(roster);
+				EseaTeamRoster roster = null;
+				try {
+					roster = team_page.fetch_roster(fName);
+				} catch (ScrapeException e) {
+					e.printStackTrace();
+					throw e;
+				}
+				EseaTeamSchedule schedule = null;
+				try {
+					schedule = team_page.fetch_schedule(fName);
+				} catch (esea.scrape.ScrapeException e) {
+					e.printStackTrace();
+					throw e;
+				}
+
+				if(roster != null)
+					db_store.insertRoster(roster);
+				if(schedule != null)
+					db_store.insertSchedule(schedule);
+			} catch(ScrapeException e) {
+				System.err.println(e.getMessage());
 			}
-			if(schedule != null)
-				db_store.insertSchedule(schedule);
 		}
 
 

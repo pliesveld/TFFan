@@ -23,12 +23,12 @@ public class ScrapeESEAMatch extends ScrapePage {
 		super();
 	}
 
-	public ScrapeESEAMatch(String file_name)
+	public ScrapeESEAMatch(String file_name) throws ScrapeException
 	{
 		super(file_name);
 	}
 
-	public ScrapeESEAMatch(File file)
+	public ScrapeESEAMatch(File file) throws ScrapeException
 	{
 		super(file);
 	}
