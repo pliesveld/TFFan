@@ -1,10 +1,9 @@
 package esea;
-import java.lang.*;
 import java.util.*;
 
 public class EseaTeamSchedule
 {
-	String esea_team_id;
+	int esea_team_id;
 	private Map<Integer, EseaScheduleEvent> schedule;
 
 
@@ -89,9 +88,9 @@ public class EseaTeamSchedule
 
 	}
 
-	public EseaTeamSchedule(String team_id)
+	public EseaTeamSchedule(int esea_team_id2)
 	{
-		this.esea_team_id = team_id;
+		this.esea_team_id = esea_team_id2;
 		this.setSchedule(new HashMap<Integer,EseaScheduleEvent>());
 	}
 

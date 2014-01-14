@@ -9,7 +9,7 @@ import java.util.Set;
 import esea.EseaMatch;
 import esea.EseaPlayer;
 import esea.EseaTeam;
-import esea.EseaTeamInfo;
+import esea.EseaDivision;
 import esea.EseaTeamRoster;
 import esea.EseaTeamSchedule;
 
@@ -32,7 +32,7 @@ public abstract class Storage {
 	
 	public abstract void updateScores();
 	
-	public void insertTeam(EseaTeamInfo teams)
+	public void insertTeam(EseaDivision teams)
 	{
 		String league = teams.getLeague();
 		String game = teams.getGame();

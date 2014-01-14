@@ -9,7 +9,7 @@ import java.util.*;
 import esea.EseaMatch;
 import esea.EseaPlayer;
 import esea.EseaTeam;
-import esea.EseaTeamInfo;
+import esea.EseaDivision;
 import esea.EseaTeamRoster;
 import esea.EseaTeamSchedule;
 

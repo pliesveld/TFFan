@@ -1,75 +1,58 @@
 package esea.scrape;
-import java.io.IOException;
-import java.io.File;
-import java.util.*;
 
-import org.jsoup.Jsoup;
+
+//import java.util.regex.Pattern;
+//import java.util.regex.Matcher;
+
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import esea.EseaTeam;
-import esea.EseaTeamInfo;
+import esea.EseaDivision;
 
 
-public class ScrapeESEALeagueDivisions extends ScrapePage {
+public class ScrapeESEALeagueDivisions
+{
+	static String LEAGUE_DOC_TITLE = "Premium - League - Standings";
 
-	public ScrapeESEALeagueDivisions()
+	static public Document fetch(String division_id) throws ScrapeException
 	{
-		super();
-	}
+		Document result;
+		String base_url = "http://play.esea.net/index.php?s=league&d=standings&division_id=";
 
-	public ScrapeESEALeagueDivisions(String file_name) throws ScrapeException
-	{
-		super(file_name);
-	}
-
-	public ScrapeESEALeagueDivisions(File file) throws ScrapeException
-	{
-		super(file);
+		result = ScrapePage.open(base_url + division_id);
+		return result;
 	}
 	
-	public EseaTeamInfo fetch(String url) {
-		if(doc == null)
-			try {
-				doc = this.open(url);
-			} catch (IOException e) {
-				e.printStackTrace();
-
-			}
-		return parse(doc);
-	}
 	
-	public EseaTeamInfo parse(Document d) {
-		EseaTeamInfo teamInfo; 
-		try {
-			if(d == null)
-				throw new ScrapeException("Invalid document reference to parse.");
+	static public EseaDivision parse(Document doc) throws ScrapeException {
+		EseaDivision teamInfo; 
 
-			String league = ScrapeUtility.ESEA.validateLeagueHeader(d);
-			Elements team_table = ScrapeUtility.validateSelect(d,"div#league-standings table tbody");            
-			Elements team_row = ScrapeUtility.validateSelect(team_table,"tr.row1,tr.row2");
-			Elements team_info = ScrapeUtility.validateSelect(team_row,"td a[href^=/teams/");
+		if(!doc.title().contentEquals(LEAGUE_DOC_TITLE))
+			throw new ScrapeException("attempting to parse document that is not an esea league standings page: " + doc.title());
 
-			int idx = league.lastIndexOf(' ');
 
-			String game = league.substring(0,idx);
-			league = league.substring(idx+1);
+		String league = ScrapeUtility.ESEA.validateLeagueHeader(doc);
+		Elements team_table = ScrapeUtility.validateSelect(doc,"div#league-standings table tbody");            
+		Elements team_row = ScrapeUtility.validateSelect(team_table,"tr.row1,tr.row2");
+		Elements team_info = ScrapeUtility.validateSelect(team_row,"td a[href^=/teams/");
 
-			teamInfo = new EseaTeamInfo(game,league);
-			for(Element team : team_info)
-			{
-				int team_id = ScrapeUtility.fetchAttrHrefAsInt(team);
-				teamInfo.add(new EseaTeam(team.ownText(),team_id));
-			}
+		int idx = league.lastIndexOf(' ');
 
-		} catch (ScrapeException e) {
-			e.printStackTrace();
-			return null;
+		String game = league.substring(0,idx);
+		league = league.substring(idx+1);
+
+		teamInfo = new EseaDivision(game,league);
+		for(Element team : team_info)
+		{
+			int team_id = ScrapeUtility.fetchAttrHrefAsInt(team);
+			teamInfo.add(new EseaTeam(team.ownText(),team_id));
 		}
+
+
 		return teamInfo;
 	}
-
 
 }
 

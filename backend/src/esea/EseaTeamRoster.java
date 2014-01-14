@@ -75,6 +75,10 @@ public class EseaTeamRoster {
 	public int getTeamId() {
 		return teamId;
 	}
+
+	public boolean isDead() {
+		return this.isDead;
+	}
 }
 
 

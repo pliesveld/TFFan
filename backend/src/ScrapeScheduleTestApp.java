@@ -1,10 +1,13 @@
 import java.io.*;
 import java.util.*;
 
+import org.jsoup.nodes.Document;
+
 import esea.EseaTeamRoster;
 import esea.EseaTeamSchedule;
 import esea.scrape.ScrapeESEATeam;
 import esea.scrape.ScrapeException;
+import esea.scrape.ScrapePage;
 import esea.store.*;
 
 public class ScrapeScheduleTestApp
@@ -33,20 +36,22 @@ public class ScrapeScheduleTestApp
 			}
 
 			try {
-				ScrapeESEATeam team_page = new ScrapeESEATeam(file);
+				ScrapeESEATeam team_page = new ScrapeESEATeam();
 				String fName = file.getName();
 				fName = fName.substring(0,fName.indexOf('.'));
 
+				Document team_doc = ScrapePage.open_file(file);
+				
 				EseaTeamRoster roster = null;
 				try {
-					roster = team_page.fetch_roster(fName);
+					roster = team_page.parse_roster(team_doc);
 				} catch (ScrapeException e) {
 					e.printStackTrace();
 					throw e;
 				}
 				EseaTeamSchedule schedule = null;
 				try {
-					schedule = team_page.fetch_schedule(fName);
+					schedule = team_page.parse_schedule(team_doc);
 				} catch (esea.scrape.ScrapeException e) {
 					e.printStackTrace();
 					throw e;

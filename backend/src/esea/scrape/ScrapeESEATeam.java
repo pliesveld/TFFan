@@ -1,9 +1,12 @@
 package esea.scrape;
-import java.io.*;
-import java.util.Map;
-import java.lang.Integer;
 
-import org.jsoup.Jsoup;
+
+import java.lang.Integer;
+import java.sql.Date;
+import java.text.ParseException;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -13,29 +16,45 @@ import esea.EseaTeamSchedule;
 import esea.EseaTeamSchedule.EseaScheduleEvent;
 
 
-public class ScrapeESEATeam extends ScrapePage {
+public class ScrapeESEATeam {
 
-	public ScrapeESEATeam(File file) throws ScrapeException
+	private Pattern team_title_pattern = Pattern.compile("^Premium - Teams - (.+)$");
+
+	public Document fetch(String esea_team_id) throws ScrapeException
 	{
-		super(file);
+		Document result;
+		String base_url = "http://play.esea.net/teams/";
+
+		try {
+			Integer.parseInt(esea_team_id);
+		} catch(NumberFormatException e) {
+			throw new ScrapeException("Invalid team id: " + esea_team_id);
+		}	
+
+		result = ScrapePage.open(base_url + esea_team_id);
+
+		Matcher m = team_title_pattern.matcher(result.title());
+		if(!m.matches())
+			throw new ScrapeException("failed to fetch esea team page: " + result.title());
+
+		return result;
 	}
 
-	public void fetch(String esea_team_id) throws ScrapeException
-	{
-		String url = "http://play.esea.net/teams/" + esea_team_id;
-			try {
-				open(url);
-			} catch(IOException e) {
-				throw new ScrapeException("Unable to retrieve esea team page: " + e.getMessage());
-//				e.printStackTrace();
-			}			
-	}
-
-	public EseaTeamSchedule fetch_schedule(String esea_team_id) throws ScrapeException 
+	public EseaTeamSchedule parse_schedule(Document doc) throws ScrapeException 
 	{
 		EseaTeamSchedule result = null;
-		fetch(esea_team_id);
-		
+
+		Matcher m = team_title_pattern.matcher(doc.title());
+		if(!m.matches())
+			throw new ScrapeException("attempting to parse an esea team schedule: " + doc.title());
+
+
+		Element team_profile = ScrapeUtility.validateSelect(doc,"a#tab-default[href^=/teams/]").first();
+		if(team_profile == null)
+			throw new ScrapeException("invalid esea team page: " + doc.title());
+
+		int esea_team_id = ScrapeUtility.fetchAttrHrefAsInt(team_profile);
+
 		Elements team_table = ScrapeUtility.validateSelect(doc,"div#profile-content div.tabContent table tbody tr.row1:gt(1)");
 
 		for( Element team_match : team_table )
@@ -43,13 +62,21 @@ public class ScrapeESEATeam extends ScrapePage {
 			if(team_match.select("td + td").first().ownText().contains("-"))
 				continue;
 
+			
+			
 			Element team_home = ScrapeUtility.validateSelect(team_match,"td + td > a").first();
 			Element team_away = ScrapeUtility.validateSelect(team_match,"td + td + td > a").first();
 
 			Element match_map = ScrapeUtility.validateSelect(team_match,"td + td + td + td").first();
 
-			Element match_result = ScrapeUtility.validateSelect(team_match,"td + td + td + td + td > a").first();
+			String match_time = ScrapeUtility.validateSelect(team_match,"td:last-child").val();
 
+
+			Element match_result = team_match.select("td + td + td + td > a").first();
+
+			if(match_result == null)
+				continue;
+			
 			String str = match_result.ownText();
 			if(!str.startsWith("Win") && !str.startsWith("Loss"))
 			{
@@ -101,19 +128,29 @@ public class ScrapeESEATeam extends ScrapePage {
 
 			EseaScheduleEvent match_event = result.new EseaScheduleEvent(team_home_id, team_away_id, match_map.ownText(), team_home_score, team_away_score);
 			result.putMatch(match_id, match_event);
+			
 		}		 
 		return result;
 
 	}
-	public EseaTeamRoster fetch_roster(String esea_team) throws ScrapeException 
+	public EseaTeamRoster parse_roster(Document doc) throws ScrapeException 
 	{
 		boolean isDead = false;
-		int esea_team_id = ScrapeUtility.parseInt(esea_team);
-		fetch(esea_team);
 
+
+		Matcher m = team_title_pattern.matcher(doc.title());
+		if(!m.matches())
+			throw new ScrapeException("attempting to parse an esea team schedule: " + doc.title());
+
+
+		Element team_profile = ScrapeUtility.validateSelect(doc,"a#tab-default[href^=/teams/]").first();
+		if(team_profile == null)
+			throw new ScrapeException("invalid esea team page: " + doc.title());
+
+		int esea_team_id = ScrapeUtility.fetchAttrHrefAsInt(team_profile);
 
 		Element team_name, league_name;
-		Elements roster_table, team_row, player_roster_table; 
+		Elements roster_table, team_row, player_roster_table = null; 
 
 
 		Elements profile_info = ScrapeUtility.validateSelect(doc,"div#profile-info");
@@ -124,27 +161,37 @@ public class ScrapeESEATeam extends ScrapePage {
 		league_name = ScrapeUtility.validateSingleSelect(doc,"div#profile-info div.content div.data ~ label.margin-top:contains(League:) + div a");
 
 
-
-		EseaTeamRoster team_roster = new EseaTeamRoster(league_name.text(),team_name.text(),esea_team_id,isDead);
-
-
 		if(dead_check.size() > 0 && dead_check.first().ownText().matches("Dead"))
 		{
 			isDead = true;
 		} else {
-
 			roster_table = ScrapeUtility.validateSelect(doc,"div#profile-column-right");
 			team_row = ScrapeUtility.validateSelect(roster_table,"div.row1,div.row2");
 
-			player_roster_table = ScrapeUtility.validateSelect(team_row,"span.right:contains(Paid):not(:contains(Not Paid)) + img + a + a");
+			player_roster_table = team_row.select("span.right:contains(Paid):not(:contains(Not Paid)) + img + a + a");
 
-			for(Element player : player_roster_table)
+			if(roster_table == null || roster_table.size() == 0)
 			{
-				int player_id = ScrapeUtility.fetchAttrHrefAsInt(player);
-				team_roster.addPlayer( player.text(), player_id);
-
+				isDead = true;
 			}
+			
+		}
+		
+		
+	
+		EseaTeamRoster team_roster = new EseaTeamRoster(league_name.text(),team_name.text(),esea_team_id,isDead);
 
+
+
+		if(!isDead && player_roster_table != null && player_roster_table.size() > 0)
+		{
+				for(Element player : player_roster_table)
+				{
+					int player_id = ScrapeUtility.fetchAttrHrefAsInt(player);
+					team_roster.addPlayer( player.text(), player_id);
+				}
+
+		
 		}
 
 		return team_roster;

@@ -1,16 +1,16 @@
 package esea;
 import java.util.*;
 
-public class EseaTeamInfo 
+public class EseaDivision 
 {
 	private String game;
 	private String league;
 	private Collection<EseaTeam> teamsArray;
 
-	public EseaTeamInfo(String game, String league)
+	public EseaDivision(String game, String league)
 	{
-		this.setGame(game);
-		this.setLeague(league);
+		setGame(game);
+		setLeague(league);
 		setTeamsArray(new ArrayList<EseaTeam>()); 
 	}
 
@@ -32,8 +32,9 @@ public class EseaTeamInfo
 		StringBuilder result = new StringBuilder(1024);
 		result.append("game: ");
 		result.append(getGame());
-		result.append("league: ");
+		result.append("\nleague: ");
 		result.append(getLeague());
+		result.append("\nteams: ");
 		result.append(getTeamsArray().toString());
 		return result.toString();
 	}
