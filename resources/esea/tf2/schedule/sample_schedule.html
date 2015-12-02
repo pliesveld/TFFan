@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<!-- set the background color for the html element outside of the external style sheet to prevent chrome from blinding people -->
+<html class="parent" style="background-color: #f2f3f7;">
+	<head>
+		<title>Premium - Teams - iT</title>
+		<meta name="description" content="Play Counter-Strike: Global Offensive, Counter-Strike 1.6, Counter-Strike: Source, StarCraft II, and Team Fortress 2 in a cheat free environment and compete to win cash and prizes." />
+		<link rel="shortcut icon" href="https://d1fj4sro0cm5nu.cloudfront.net/global/favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" type="text/css" href="https://d1fj4sro0cm5nu.cloudfront.net/global/css/common.css?version=18">
+		<link rel="stylesheet" type="text/css" href="https://d1fj4sro0cm5nu.cloudfront.net/premium/css/premium.css?version=2">
+
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/jquery.js?version=1.7.2"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/jquery-ui.js?version=1.8.18"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/strophe.js?version=1"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/strophe.websocket.js?version=2"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/strophe.roster.js?version=2"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/strophe.muc.js?version=8"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/recaptcha_ajax.js?version=1"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/global/js/common.js?version=41"></script>
+		<script src="https://d1fj4sro0cm5nu.cloudfront.net/premium/js/premium.js?version=12"></script>
+		<script src="http://ads.esea.net/delivery/spcjs.php?id=1"></script>
+
+		<script>
+
+
+			// configure the pagelet class
+			pagelet = new pagelet();
+			pagelet.contentId = 'layout-column-center';
+
+
+			// pass some essential info from php to js
+			config.siteId = 1;
+			config.siteDir = '/premium';
+			config.date = new Date('Sun, 29 Dec 2013 15:12:44 +0000');
+
+			// pass user info to javascript
+			userInfo.id = null;
+			userInfo.locale = 'en_US';
+			userInfo.regionId = 1;
+			userInfo.gameIds = [1,25,13,93,43];
+			userInfo.date = new Date('Sun, 29 Dec 2013 15:12:44 +0000');
+
+
+			// preload images
+			preloadImages(
+				'https://d1fj4sro0cm5nu.cloudfront.net/premium/images/select_region_closed.png',
+				'https://d1fj4sro0cm5nu.cloudfront.net/premium/images/select_region_open.png'
+			);
+
+		</script>
+
+
+
+		<script type="text/javascript">
+			var _qevents = _qevents || [];
+			(function() {
+				var elem = document.createElement('script');
+				elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+				elem.async = true;
+				elem.type = "text/javascript";
+				var scpt = document.getElementsByTagName('script')[0];
+				scpt.parentNode.insertBefore(elem, scpt);  
+			})();
+		</script>
+
+
+
+		<script>
+
+			var _gaq = _gaq || [];
+			_gaq.push(
+				['_setAccount', 'UA-426970-1'],
+				['_setDomainName', '.esea.net'],
+				['_setAllowLinker', 'true'],
+				['_trackPageview'],
+				//['_setCustomVar', 1, 'region_id', 1, 3]
+				['_setVar', 'region_id=1']
+			);
+
+
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+
+
+		</script>
+	</head>
+	<body class="parent">
+
+<div id="network-container"><div id="network-contents"><div class="left"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/network/logo_network.png"><a href="/index.php" class="highlight">PREMIUM</a> <img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/network/icon_separator_arrow.gif">&nbsp;<a href="http://market.esea.net">MARKET</a> <img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/network/icon_separator_arrow.gif">&nbsp;<a href="http://news.esea.net">NEWS</a><span class="site-alerts"><span>▫</span><a  href="http://news.esea.net/index.php?s=news&d=comments&id=13488">Top 10 Frags by ESEA Premium Members... (37)</a><a style="display: none;" href="http://news.esea.net/index.php?s=news&d=comments&id=13486">United5 invited after ENCE/LGB drop out (73)</a></span></div><div id="user-badge"><a class="highlight" href="/index.php?s=session&d=login">Sign In</a><img class="separator" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/network/icon_separator_line.png"><a class="highlight" href="/index.php?s=upanel&d=register">Create Account</a><div><a href="/index.php?s=upanel&d=lostpass">Lost Password</a><img class="separator" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/network/icon_separator_line.png"><a href="/index.php?s=upanel&d=recover">Lost Email</a><img class="separator" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/network/icon_separator_line.png"><a class="highlight" href="/index.php?s=support">Help</a></div></div></div></div><a name="top"></a><div id="network-spacer"></div>
+
+		<div id="layout-container" class="layout-standard">
+		
+			<div id="layout-header">
+				<form action="/index.php">
+				<input type="hidden" name="s" value="search">
+				<input type="image" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/search_button.png">
+				<input type="text" name="query" value="Search ESEA">
+				</form>
+				<a class="home" href="/index.php"></a>
+			</div>
+
+<div id="layout-ticker"><div class="left"><a href="en_GB"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/GB.gif"></a><a href="en_US"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif"></a><a href="fr_FR"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/FR.gif"></a><a href="de_DE"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/DE.gif"></a><a href="pt_BR"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/BR.gif"></a><a href="es_ES"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/ES.gif"></a><a href="se_SE"><img class="country-flag" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/SE.gif"></a><b>Language</b></div><span id="clock">December 29th, 3:12pm</span> <acronym title="Current time zone: Coordinated Universal Time+0">UTC+0</acronym></div><div id="layout-column-left"><div id="layout-region-selector"><h1 class="clickable">North America</h1><div class="hidden"><a class="pagelet-ignore" href="4">Brazil</a><a class="pagelet-ignore" href="2">Europe</a><a class="pagelet-ignore" href="3">Latin America</a></div></div><div id="layout-game-selector"><img class="clickable" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/icon_select_games.png"><img class="clickable" title="Counter-Strike 1.6 selected" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/icon_select_cs_off.png"><img class="clickable" title="Counter-Strike: Global Offensive selected" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/icon_select_csgo_off.png"><img class="clickable" title="Counter-Strike: Source selected" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/icon_select_css_off.png"><img class="clickable" title="League of Legends selected" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/icon_select_lol_off.png"><img class="clickable" title="Team Fortress 2 selected" src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/icon_select_tf2_off.png"><div class="spacer"></div></div><div id="layout-navigation" class="module"><a class="menu-main active" href="/index.php?s=upanel&amp;d=register">Create Account</a><a class="menu-main" href="">League</a><div class="menu-sub hidden"><a class="" href="/index.php?s=league&d=register">Register &amp; Pay</a><a class="" href="/index.php?s=recruitment">Find Teams &amp; Players</a><a class="" href="/index.php?s=league&d=schedule">Schedule &amp; Results</a><a class="" href="/index.php?s=league&d=standings">Divisions &amp; Standings</a><a class="" href="/index.php?s=league&d=predictions">Predictions</a><a class="" href="/index.php?s=stats&d=leaders&type_scope=league&period[type]=season">Statistics</a><a class="" href="/index.php?s=league&d=transactions">Player Transactions</a><a class="" href="/index.php?s=content&d=league_rules_CS">Rules</a></div><a class="menu-main" href="">Ladders</a><div class="menu-sub hidden"><a class="" href="/index.php?s=ladders">Live Rankings</a><a class="" href="/index.php?s=ladders&d=join">Join a Ladder</a><a class="" href="/index.php?s=recruitment">Find Teams &amp; Players</a></div><a class="menu-main" href="">Statistics</a><div class="menu-sub hidden"><a class="" href="/index.php?s=stats">Monthly Leaders</a><a class="" href="/index.php?s=stats&d=overall">Player Rankings</a><a class="" href="/index.php?s=stats&d=weapon">Weapons</a><a class="" href="/index.php?s=stats&d=map">Maps</a><a class="" href="/index.php?s=stats&d=leaders&type_scope=league">League</a></div><a class="menu-main" href="">Downloads</a><div class="menu-sub hidden"><a class="" href="/index.php?s=downloads&d=view&id=1">ESEA Client</a><a class="" href="/index.php?s=downloads&d=cotw">Clips Of The Week</a><a class="" href="/index.php?s=demos">Demos</a><a class="" href="/index.php?s=downloads">Movies &amp; More</a></div><a class="menu-main" href="">Forums</a><div class="menu-sub hidden"><a class="" href="/index.php?s=forums">Forum Index</a><a class="" href="/index.php?s=recent_discussion&d=list">Recent Discussion</a><a class="" href="/index.php?s=forums&d=newtopic">Post New Topic</a></div><a class="menu-main" href="">Support</a><div class="menu-sub hidden"><a class="" href="/index.php?s=support&d=faq">Frequently Asked Questions</a><a class="" href="/index.php?s=support&d=tickets">Support Tickets</a><a class="" href="/index.php?s=content&d=league_rules_CS">League Rules</a><a class="" href="/index.php?s=support&d=suspects">Suspect List</a><a class="" href="/index.php?s=support&d=ban_list">Ban List</a><a class="" href="/index.php?s=support&d=ban_types">Ban Types</a><a class="" href="/index.php?s=content&d=hnban">How To Not Get Banned</a></div></div>
+
+				<div id="module-streams" class="module">
+	<div class="module-header">What to Watch</div>
+	<ul class="hidden">
+		<li id="streamTemplate" class="row1">
+			<span class="right"></span>
+			<img alt=""><a class="media-preview" href="">link<div><img src=""></div></a><span></span>
+		</li>
+	</ul>
+	<ul class="recent-items"></ul>
+	<div class="actions">
+		» <a class="bold" href="/index.php?s=support&d=faq&id=229">How to Stream</a> | <a href="/index.php?s=upanel&d=list&type=streaming">More</a>
+	</div>
+
+<!-- template specific js -->
+<script>
+
+	$(document).ready(function() {
+
+		live.streams([{"type":"user","id":"605940","alias":"Shakira","service":"twitch","account":"nosleeptv","live_id":"4294967295","game_id":"0","viewers":"590","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":null,"game_icon":null},{"type":"user","id":"368438","alias":"steel-","service":"twitch","account":"steel_tv","live_id":"4294967295","game_id":"25","viewers":"125","server_id":"461","server_type":"pug","match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"380413","alias":"MR_SLIN","service":"twitch","account":"misterslin","live_id":"4294967295","game_id":"43","viewers":"86","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Team Fortress 2","game_icon":"43.gif"},{"type":"user","id":"622667","alias":"hemzkG-","service":"twitch","account":"hemzk","live_id":"4294967295","game_id":"25","viewers":"16","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"474712","alias":"ecliPse","service":"twitch","account":"OoOeclipse","live_id":"4294967295","game_id":"25","viewers":"7","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"513381","alias":"robiin","service":"twitch","account":"robiii_n","live_id":"4294967295","game_id":"25","viewers":"6","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"547155","alias":"RRtv","service":"twitch","account":"RandomRambo","live_id":"4294967295","game_id":"25","viewers":"6","server_id":"486","server_type":"pug","match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"386225","alias":"irvie","service":"twitch","account":"csgoirv","live_id":"4294967295","game_id":"25","viewers":"6","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"528286","alias":"Siente","service":"twitch","account":"SienteCS","live_id":"4294967295","game_id":"25","viewers":"4","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"538832","alias":"ZYH","service":"twitch","account":"zyyhh","live_id":"4294967295","game_id":"25","viewers":"4","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"109583","alias":"Friza","service":"twitch","account":"friza_uk","live_id":"4294967295","game_id":"25","viewers":"4","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"545440","alias":"Blote","service":"twitch","account":"Blote","live_id":"4294967295","game_id":"25","viewers":"2","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"405735","alias":"-XeqtR-","service":"twitch","account":"dom1w0w","live_id":"4294967295","game_id":"25","viewers":"1","server_id":"92","server_type":"pug","match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"523354","alias":"shaney","service":"twitch","account":"shaneyTV","live_id":"4294967295","game_id":"0","viewers":"1","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":null,"game_icon":null},{"type":"user","id":"156413","alias":"NiXons","service":"twitch","account":"nixons2","live_id":"4294967295","game_id":"25","viewers":"1","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"620694","alias":"POIKAA","service":"twitch","account":"viropoika","live_id":"4294967295","game_id":"25","viewers":"1","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"6112","alias":"mcvizzle","service":"twitch","account":"mcvizzle","live_id":"4294967295","game_id":"25","viewers":"1","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"515939","alias":"pcoon","service":"twitch","account":"Gorillabc","live_id":"4294967295","game_id":"25","viewers":"1","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif"},{"type":"user","id":"604574","alias":"cyres1K","service":"twitch","account":"cyres91","live_id":"4294967295","game_id":"0","viewers":"0","server_id":null,"server_type":null,"match_id":null,"opponent_team_id":null,"opponent_team_tag":"","game_name":null,"game_icon":null}]);
+
+	});
+
+</script>
+<!-- end template specific js -->
+
+</div>
+<div class="spacer"></div>
+				<div id="module-recent-discussion" class="module">
+	<div class="module-header">Recent Discussion</div>
+	<div class="tabArea">
+		<a id="tab-discussion-site" class="tab activeTab" href="" onclick="getDiscussion('site', true); tabSync(this); return false;">All</a>		<div class="spacer"></div>
+	</div>
+	<ul class="hidden">
+		<li id="discussionTemplate">
+			<img alt=""><a class="comment-status-element" href=""></a>
+		</li>
+	</ul>
+	<div class="tabContent " id="body-discussion-site">
+		<ul class="recent-items"></ul>
+		</ul>
+		<div class="actions">
+			» <a class="bold" href="/index.php?s=forums&d=newtopic">Post New</a> | <a href="/index.php?s=forums">More</a>
+		</div>
+	</div>
+	<div class="tabContent hidden" id="body-discussion-user">
+		<ul class="recent-items"></ul>
+	</div>
+	<div class="tabContent hidden" id="body-discussion-subscriptions">
+		<ul class="recent-items"></ul>
+	</div>
+
+<!-- template specific js -->
+<script>
+
+	$(document).ready(function() {
+
+		live.discussion('site', [{"parent_type":"content","parent_id":"13488","parent_string":"Top 10 Frags by ESEA Premium Members (December 2013)","comment_id":"10832552","site_id":"3","game_id":"25","is_locked":"0","is_sticky":"1","last_comment_post_time":"1388296789","replies":"37","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Content","link":"Top 10 Frags by ESEA Premium Members (December 2013)","post_age":"9 hours ago","title":"Content (sticky) - 37 replies\n Top 10 Frags by ESEA Premium Members (December 2013)","href":"http:\/\/news.esea.net\/index.php?s=news&d=comments&id=13488"},{"parent_type":"content","parent_id":"13469","parent_string":"Season 15 NA Playoff Schedule &amp; Map Rotation","comment_id":"10832282","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"1","last_comment_post_time":"1388293084","replies":"50","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Content","link":"Season 15 NA Playoff Schedule &amp; Map Rotation","post_age":"10 hours ago","title":"Content (sticky) - 50 replies\n Season 15 NA Playoff Schedule &amp; Map Rotation","href":"\/index.php?s=news&d=comments&id=13469"},{"parent_type":"content","parent_id":"13130","parent_string":"ESEA S15 LAN Playoff Information","comment_id":"10832280","site_id":"1","game_id":"0","is_locked":"0","is_sticky":"1","last_comment_post_time":"1388293043","replies":"34","game_abbr":"","game_name":"Global (All Games)","game_icon":"0.gif","type":"Content","link":"ESEA S15 LAN Playoff Information","post_age":"10 hours ago","title":"Content (sticky) - 34 replies\n ESEA S15 LAN Playoff Information","href":"\/index.php?s=news&d=comments&id=13130"},{"parent_type":"forums_topics","parent_id":"538391","parent_string":"ESEA LAN Help!","comment_id":"10822453","site_id":"1","game_id":"0","is_locked":"1","is_sticky":"1","last_comment_post_time":"1387918435","replies":"0","game_abbr":"","game_name":"Global (All Games)","game_icon":"0.gif","type":"Forum Topic","link":"ESEA LAN Help!","post_age":"5 days ago","title":"Forum Topic (sticky, locked) - 0 replies\n ESEA LAN Help!","href":"\/index.php?s=forums&d=topic&id=538391"},{"parent_type":"forums_topics","parent_id":"534511","parent_string":"hiring web developer","comment_id":"10762199","site_id":"1","game_id":"0","is_locked":"1","is_sticky":"1","last_comment_post_time":"1386104570","replies":"0","game_abbr":"","game_name":"Global (All Games)","game_icon":"0.gif","type":"Forum Topic","link":"hiring web developer","post_age":"Dec 3rd","title":"Forum Topic (sticky, locked) - 0 replies\n hiring web developer","href":"\/index.php?s=forums&d=topic&id=534511"},{"parent_type":"forums_topics","parent_id":"539150","parent_string":"new rust server legit!","comment_id":"10832981","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388329602","replies":"10","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"new rust server legit!","post_age":"6 min. ago","title":"Forum Topic - 10 replies\n new rust server legit!","href":"\/index.php?s=forums&d=topic&id=539150"},{"parent_type":"forums_topics","parent_id":"539149","parent_string":"zowie ec1 vs zowie fk","comment_id":"10832975","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388328863","replies":"9","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"zowie ec1 vs zowie fk","post_age":"18 min. ago","title":"Forum Topic - 9 replies\n zowie ec1 vs zowie fk","href":"\/index.php?s=forums&d=topic&id=539149"},{"parent_type":"forums_topics","parent_id":"539040","parent_string":"whole inv. for knife","comment_id":"10832972","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388328505","replies":"9","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"whole inv. for knife","post_age":"24 min. ago","title":"Forum Topic - 9 replies\n whole inv. for knife","href":"\/index.php?s=forums&d=topic&id=539040"},{"parent_type":"forums_topics","parent_id":"539154","parent_string":"g00dkarma going pro","comment_id":"10832969","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388328132","replies":"9","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"g00dkarma going pro","post_age":"30 min. ago","title":"Forum Topic - 9 replies\n g00dkarma going pro","href":"\/index.php?s=forums&d=topic&id=539154"},{"parent_type":"forums_topics","parent_id":"539113","parent_string":"How did you guys end up meeting people?","comment_id":"10832967","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388328034","replies":"33","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"How did you guys end up meeting people?","post_age":"32 min. ago","title":"Forum Topic - 33 replies\n How did you guys end up meeting people?","href":"\/index.php?s=forums&d=topic&id=539113"},{"parent_type":"forums_topics","parent_id":"538864","parent_string":"Picking up 2","comment_id":"10832960","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388327080","replies":"9","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Picking up 2","post_age":"48 min. ago","title":"Forum Topic - 9 replies\n Picking up 2","href":"\/index.php?s=forums&d=topic&id=538864"},{"parent_type":"forums_topics","parent_id":"539105","parent_string":"Last fight for silva?","comment_id":"10832953","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388326389","replies":"49","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Last fight for silva?","post_age":"59 min. ago","title":"Forum Topic - 49 replies\n Last fight for silva?","href":"\/index.php?s=forums&d=topic&id=539105"},{"parent_type":"content","parent_id":"13486","parent_string":"United5 invited after ENCE\/LGB drop out","comment_id":"10832944","site_id":"3","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388324595","replies":"73","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Content","link":"United5 invited after ENCE\/LGB drop out","post_age":"1 hour ago","title":"Content - 73 replies\n United5 invited after ENCE\/LGB drop out","href":"http:\/\/news.esea.net\/index.php?s=news&d=comments&id=13486"},{"parent_type":"forums_topics","parent_id":"534712","parent_string":"g00dkarma TV","comment_id":"10832943","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388323841","replies":"76","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"g00dkarma TV","post_age":"2 hours ago","title":"Forum Topic - 76 replies\n g00dkarma TV","href":"\/index.php?s=forums&d=topic&id=534712"},{"parent_type":"forums_topics","parent_id":"539153","parent_string":"bayonet blue steel mw","comment_id":"10832938","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388322780","replies":"2","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"bayonet blue steel mw","post_age":"2 hours ago","title":"Forum Topic - 2 replies\n bayonet blue steel mw","href":"\/index.php?s=forums&d=topic&id=539153"},{"parent_type":"forums_topics","parent_id":"539036","parent_string":"12 Copies of BF4 To Sell","comment_id":"10832933","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388322173","replies":"36","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"12 Copies of BF4 To Sell","post_age":"2 hours ago","title":"Forum Topic - 36 replies\n 12 Copies of BF4 To Sell","href":"\/index.php?s=forums&d=topic&id=539036"},{"parent_type":"forums_topics","parent_id":"538835","parent_string":"new map!","comment_id":"10832929","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388321602","replies":"12","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"new map!","post_age":"2 hours ago","title":"Forum Topic - 12 replies\n new map!","href":"\/index.php?s=forums&d=topic&id=538835"},{"parent_type":"forums_topics","parent_id":"539152","parent_string":"Ec1 eVo CL Or Steelseries Rival?","comment_id":"10832924","site_id":"1","game_id":"25","is_locked":"1","is_sticky":"0","last_comment_post_time":"1388320719","replies":"0","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Ec1 eVo CL Or Steelseries Rival?","post_age":"3 hours ago","title":"Forum Topic (locked) - 0 replies\n Ec1 eVo CL Or Steelseries Rival?","href":"\/index.php?s=forums&d=topic&id=539152"},{"parent_type":"forums_topics","parent_id":"539151","parent_string":"Steelseries Rival or  Ec1 eVo CL","comment_id":"10832923","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388320111","replies":"0","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Steelseries Rival or  Ec1 eVo CL","post_age":"3 hours ago","title":"Forum Topic - 0 replies\n Steelseries Rival or  Ec1 eVo CL","href":"\/index.php?s=forums&d=topic&id=539151"},{"parent_type":"forums_topics","parent_id":"539147","parent_string":"need a 30","comment_id":"10832922","site_id":"1","game_id":"93","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388319939","replies":"3","game_abbr":"LoL","game_name":"League of Legends","game_icon":"93.gif","type":"Forum Topic","link":"need a 30","post_age":"3 hours ago","title":"Forum Topic - 3 replies\n need a 30","href":"\/index.php?s=forums&d=topic&id=539147"},{"parent_type":"forums_topics","parent_id":"532908","parent_string":"SoCal Revival Tournament","comment_id":"10832920","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388319633","replies":"406","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"SoCal Revival Tournament","post_age":"3 hours ago","title":"Forum Topic - 406 replies\n SoCal Revival Tournament","href":"\/index.php?s=forums&d=topic&id=532908"},{"parent_type":"forums_topics","parent_id":"539141","parent_string":"ESEA for DOD and DODS","comment_id":"10832918","site_id":"1","game_id":"0","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388319318","replies":"9","game_abbr":"","game_name":"Global (All Games)","game_icon":"0.gif","type":"Forum Topic","link":"ESEA for DOD and DODS","post_age":"3 hours ago","title":"Forum Topic - 9 replies\n ESEA for DOD and DODS","href":"\/index.php?s=forums&d=topic&id=539141"},{"parent_type":"forums_topics","parent_id":"539135","parent_string":"dom1 streaming 10man","comment_id":"10832914","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388318516","replies":"1","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"dom1 streaming 10man","post_age":"3 hours ago","title":"Forum Topic - 1 replies\n dom1 streaming 10man","href":"\/index.php?s=forums&d=topic&id=539135"},{"parent_type":"forums_topics","parent_id":"538899","parent_string":"I miss you","comment_id":"10832912","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388318326","replies":"26","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"I miss you","post_age":"3 hours ago","title":"Forum Topic - 26 replies\n I miss you","href":"\/index.php?s=forums&d=topic&id=538899"},{"parent_type":"forums_topics","parent_id":"538767","parent_string":"Al Horford injured","comment_id":"10832907","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388316947","replies":"12","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Al Horford injured","post_age":"4 hours ago","title":"Forum Topic - 12 replies\n Al Horford injured","href":"\/index.php?s=forums&d=topic&id=538767"},{"parent_type":"forums_topics","parent_id":"538856","parent_string":"Take Your Time(RECRUITING)","comment_id":"10832906","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388316885","replies":"27","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Take Your Time(RECRUITING)","post_age":"4 hours ago","title":"Forum Topic - 27 replies\n Take Your Time(RECRUITING)","href":"\/index.php?s=forums&d=topic&id=538856"},{"parent_type":"forums_topics","parent_id":"530597","parent_string":"KNIFE TRADE THREAD.","comment_id":"10832902","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388316695","replies":"356","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"KNIFE TRADE THREAD.","post_age":"4 hours ago","title":"Forum Topic - 356 replies\n KNIFE TRADE THREAD.","href":"\/index.php?s=forums&d=topic&id=530597"},{"parent_type":"forums_topics","parent_id":"539148","parent_string":"Need team name","comment_id":"10832887","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388315324","replies":"0","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"Need team name","post_age":"4 hours ago","title":"Forum Topic - 0 replies\n Need team name","href":"\/index.php?s=forums&d=topic&id=539148"},{"parent_type":"forums_topics","parent_id":"538147","parent_string":"[csgo main] need potential starter","comment_id":"10832885","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388315016","replies":"153","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"[csgo main] need potential starter","post_age":"4 hours ago","title":"Forum Topic - 153 replies\n [csgo main] need potential starter","href":"\/index.php?s=forums&d=topic&id=538147"},{"parent_type":"forums_topics","parent_id":"539131","parent_string":"bayonet crimson web ft","comment_id":"10832884","site_id":"1","game_id":"25","is_locked":"0","is_sticky":"0","last_comment_post_time":"1388314825","replies":"3","game_abbr":"CSGO","game_name":"Counter-Strike: Global Offensive","game_icon":"25.gif","type":"Forum Topic","link":"bayonet crimson web ft","post_age":"4 hours ago","title":"Forum Topic - 3 replies\n bayonet crimson web ft","href":"\/index.php?s=forums&d=topic&id=539131"}]);
+
+	});
+
+</script>
+<!-- end template specific js -->
+
+</div>
+<div class="spacer"></div>
+				<div class="module" id="module-recent-downloads">
+	<div class="module-header">Recent Downloads</div>
+	<div class="tabArea">
+		<a id="tab-downloads-all" class="tab activeTab" href="" onclick="getDownloads('all'); tabSync(this); return false;">All</a>
+		<a id="tab-downloads-cotw" class="tab " href="" onclick="getDownloads('cotw'); tabSync(this); return false;">COTW</a>
+		<a id="tab-downloads-demos" class="tab " href="" onclick="getDownloads('demos'); tabSync(this); return false;">Demos</a>
+		<a id="tab-downloads-other" class="tab " href="" onclick="getDownloads('other'); tabSync(this); return false;">Other</a>
+		<div class="spacer"></div>
+	</div>
+	<ul class="hidden">
+		<li id="recentDownloadsTemplate">
+			<img alt=""><a class="comment-status-element" href=""></a>
+		</li>
+	</ul>
+	<div class="tabContent " id="body-downloads-all">
+		<ul class="recent-items"></ul>
+	</div>
+	<div class="tabContent hidden" id="body-downloads-cotw">
+		<ul class="recent-items"></ul>
+	</div>
+	<div class="tabContent hidden" id="body-downloads-demos">
+		<ul class="recent-items"></ul>
+	</div>
+	<div class="tabContent hidden" id="body-downloads-other">
+		<ul class="recent-items"></ul>
+	</div>
+
+<!-- template specific js -->
+<script>
+
+	$(document).ready(function() {
+
+		getDownloads('all', [{"id":1387756800,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1387756800,"post_time":1387756800,"replies":0,"last_comment_post_time":1388329716,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1387152000","string":"COTW Week #424 Clips","link":"COTW Week #424 Clips","title":"COTW - 0 replies\n COTW Week #424 Clips","post_age":"7 days ago"},{"id":1387152000,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1387152000,"post_time":1387152000,"replies":0,"last_comment_post_time":1387152000,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1386547200","string":"COTW Week #423 Clips","link":"COTW Week #423 Clips","title":"COTW - 0 replies\n COTW Week #423 Clips","post_age":"Dec 16th"},{"id":1386547200,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1386547200,"post_time":1386547200,"replies":0,"last_comment_post_time":1386547200,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1385942400","string":"COTW Week #422 Clips","link":"COTW Week #422 Clips","title":"COTW - 0 replies\n COTW Week #422 Clips","post_age":"Dec 9th"},{"id":1385942400,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1385942400,"post_time":1385942400,"replies":0,"last_comment_post_time":1385942400,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1385337600","string":"COTW Week #421 Clips","link":"COTW Week #421 Clips","title":"COTW - 0 replies\n COTW Week #421 Clips","post_age":"Dec 2nd"},{"id":1385337600,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1385337600,"post_time":1385337600,"replies":0,"last_comment_post_time":1385337600,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1384732800","string":"COTW Week #420 Clips","link":"COTW Week #420 Clips","title":"COTW - 0 replies\n COTW Week #420 Clips","post_age":"Nov 25th"},{"id":1384732800,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1384732800,"post_time":1384732800,"replies":0,"last_comment_post_time":1384732800,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1384128000","string":"COTW Week #419 Clips","link":"COTW Week #419 Clips","title":"COTW - 0 replies\n COTW Week #419 Clips","post_age":"Nov 18th"},{"id":1384128000,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1384128000,"post_time":1384128000,"replies":0,"last_comment_post_time":1384128000,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1383523200","string":"COTW Week #418 Clips","link":"COTW Week #418 Clips","title":"COTW - 0 replies\n COTW Week #418 Clips","post_age":"Nov 11th"},{"id":1383523200,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1383523200,"post_time":1383523200,"replies":0,"last_comment_post_time":1383523200,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1382918400","string":"COTW Week #417 Clips","link":"COTW Week #417 Clips","title":"COTW - 0 replies\n COTW Week #417 Clips","post_age":"Nov 4th"},{"id":1382918400,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1382918400,"post_time":1382918400,"replies":0,"last_comment_post_time":1382918400,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1382313600","string":"COTW Week #416 Clips","link":"COTW Week #416 Clips","title":"COTW - 0 replies\n COTW Week #416 Clips","post_age":"Oct 28th"},{"id":1382313600,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1382313600,"post_time":1382313600,"replies":0,"last_comment_post_time":1382313600,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1381708800","string":"COTW Week #415 Clips","link":"COTW Week #415 Clips","title":"COTW - 0 replies\n COTW Week #415 Clips","post_age":"Oct 21st"},{"id":1381708800,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1381708800,"post_time":1381708800,"replies":0,"last_comment_post_time":1381708800,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1381104000","string":"COTW Week #414 Clips","link":"COTW Week #414 Clips","title":"COTW - 0 replies\n COTW Week #414 Clips","post_age":"Oct 14th"},{"id":1381104000,"game_id":0,"game_name":"Global (All Games)","game_icon":"0.gif","parent_type":"cotw","parent_id":1381104000,"post_time":1381104000,"replies":0,"last_comment_post_time":1381104000,"type":"COTW","href":"\/index.php?s=downloads&d=cotw&display=1380499200","string":"COTW Week #413 Clips","link":"COTW Week #413 Clips","title":"COTW - 0 replies\n COTW Week #413 Clips","post_age":"Oct 7th"}]);
+
+	});
+
+</script>
+<!-- end template specific js -->
+
+</div>
+				<div class="module" id="module-ads-support">
+	<div class="module-header">Support From</div>
+	<script>OA_show(13);</script>
+	<script>OA_show(14);</script>
+	<script>OA_show(15);</script>
+	<script>OA_show(16);</script>
+	<script>OA_show(17);</script>
+</div>
+
+				<br><br><br>
+				<div class="center">
+					<a class="bold" href="/index.php?s=support&d=faq&id=23">Earn cash on ESEA</a>
+					<br><br><br>
+					<a class="bold" href="/index.php?s=support&d=faq">Frequently Asked<br>Questions</a>
+					<br><br><br>
+					Still not satisfied?<br>
+					<a class="bold" href="/index.php?s=support">Open a ticket</a>
+				</div>
+			</div>
+			<div id="layout-column-center">	
+	<div class="module-header">Team Profile</div>
+
+
+	<div class="content-block" id="teams-profile">
+
+
+		<div class="tabArea">
+			<span class="right">
+
+	
+				<b>»</b> <b>No Action</b><br>
+
+	
+			</span>
+			<a id="tab-default" class="tab activeTab" href="/teams/69987">Profile</a>
+			<a id="tab-stats" class=" tab " href="/teams/69987?tab=stats">Statistics</a>
+			<a id="tab-league" class=" tab " href="/teams/69987?tab=league">League History</a>
+			<a id="tab-roster" class=" tab " href="/teams/69987?tab=roster">Roster History</a>
+			<div class="spacer"></div>
+		</div>
+
+
+		<div id="profile-header">
+			<h1>iT</h1>
+		</div>
+		<div id="profile-info">
+			<a href="https://d1fj4sro0cm5nu.cloudfront.net/global/images/teams/69987.0.png" target="_blank"><img id="profile-image" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/teams/69987.0_t.png"></a>
+			<div class="content">
+				<div class="sub-header bold">Team Information</div>
+				<label>Tag:</label>
+				<div class="data">_iT</div>
+
+				<label>Leader:</label>
+				<div class="data"><a href="/users/361802">b4nny</a></div>
+
+				<label>Scheduler:</label>
+				<div class="data"><a href="/users/361802">b4nny</a></div>
+
+				<label>Website:</label>
+				<div class="data">None</div>
+
+				<label class="margin-top">League:</label>
+				<div class="data margin-top">
+
+
+	
+					<a href="/index.php?s=league&d=standings&division_id=2182&find_entity_id=69987#entity69987">TF2 Invite</a> (15-0-0)<br>
+
+	
+
+				</div>
+				<div class="spacer"></div>
+
+				<label class="margin-top">Ladders:</label>
+				<div class="data margin-top">
+
+
+					Not active in any <a href="/index.php?s=ladders">ladders</a>
+
+
+				</div>
+				<div class="spacer"></div>
+
+				<label class="margin-top">Scrims:</label>
+				<div class="data margin-top">Active (0-0-0)</div>
+			</div>
+		</div>
+
+		<div id="profile-column-right">
+			<div class="sub-header bold">Recent Visitors</div>
+
+
+			<div class="row1">
+				<span class="right">20 hours</span>
+				<img class="buddy-411454 add-buddy middle clickable" onclick="buddyAction(411454, 'cigar', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Canada" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/CA.gif" title="Canada" class="country-flag"></a> <a href="/users/411454">cigar</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">21 hours</span>
+				<img class="buddy-603294 add-buddy middle clickable" onclick="buddyAction(603294, 'sooperdooper', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/603294">sooperdoop</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">24 hours</span>
+				<img class="buddy-603772 add-buddy middle clickable" onclick="buddyAction(603772, 'Candlestick', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/603772">candlestic</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">1 day</span>
+				<img class="buddy-459145 add-buddy middle clickable" onclick="buddyAction(459145, 'spello', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Fiji" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/FJ.gif" title="Fiji" class="country-flag"></a> <a href="/users/459145">spello</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">1 day</span>
+				<img class="buddy-574251 add-buddy middle clickable" onclick="buddyAction(574251, 'SMB123', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Viet Nam" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/VN.gif" title="Viet Nam" class="country-flag"></a> <a href="/users/574251">smb123</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">1 day</span>
+				<img class="buddy-580242 add-buddy middle clickable" onclick="buddyAction(580242, 'Izz', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/580242">izz</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">1 day</span>
+				<img class="buddy-434489 add-buddy middle clickable" onclick="buddyAction(434489, 'przm', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Fiji" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/FJ.gif" title="Fiji" class="country-flag"></a> <a href="/users/434489">przm</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">2 days</span>
+				<img class="buddy-623416 add-buddy middle clickable" onclick="buddyAction(623416, 'WiKLU9D', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Sweden" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/SE.gif" title="Sweden" class="country-flag"></a> <a href="/users/623416">wiklu9d</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">2 days</span>
+				<img class="buddy-460270 add-buddy middle clickable" onclick="buddyAction(460270, 'TAylor-B', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/460270">taylor-b</a>
+			</div>
+
+
+			<div class="row1">
+				<span class="right">2 days</span>
+				<img class="buddy-589587 add-buddy middle clickable" onclick="buddyAction(589587, 'Firefly141', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/589587">firefly141</a>
+			</div>
+
+
+			<div class="sub-header bold margin-top">Active Roster (7)</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Paid</span>
+
+		
+	
+				<img class="buddy-361802 add-buddy middle clickable" onclick="buddyAction(361802, 'b4nny', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/361802">b4nny</a>
+			</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Not Paid</span>
+
+		
+	
+				<img class="buddy-340306 add-buddy middle clickable" onclick="buddyAction(340306, 'bLdsre', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/340306">bLdsre</a>
+			</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Paid</span>
+
+		
+	
+				<img class="buddy-510132 add-buddy middle clickable" onclick="buddyAction(510132, 'indust', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/510132">indust</a>
+			</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Paid</span>
+
+		
+	
+				<img class="buddy-391030 add-buddy middle clickable" onclick="buddyAction(391030, 'lansky', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/391030">lansky</a>
+			</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Paid</span>
+
+		
+	
+				<img class="buddy-410529 add-buddy middle clickable" onclick="buddyAction(410529, 'rr-', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Japan" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/JP.gif" title="Japan" class="country-flag"></a> <a href="/users/410529">rr-</a>
+			</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Paid</span>
+
+		
+	
+				<img class="buddy-456431 add-buddy middle clickable" onclick="buddyAction(456431, 'Shrugger', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+Macedonia, The Former Yugoslav Republic Of" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/MK.gif" title="Macedonia, The Former Yugoslav Republic Of" class="country-flag"></a> <a href="/users/456431">Shrugger</a>
+			</div>
+
+
+			<div class="row1">
+
+	
+		
+				<span class="right">Paid</span>
+
+		
+	
+				<img class="buddy-328490 add-buddy middle clickable" onclick="buddyAction(328490, 'xalox', this);" src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/icon_addbuddy.gif"></a> <a href="http://www.google.com/search?btnI=true&q=site:cia.gov/library/publications/the-world-factbook/geos/+United States" target="_blank"><img src="https://d1fj4sro0cm5nu.cloudfront.net/global/images/flags/US.gif" title="United States" class="country-flag"></a> <a href="/users/328490">xalox</a>
+			</div>
+
+
+		</div>
+		<div id="profile-column-left">
+			<div class="sub-header bold">Details</div>
+			iT, sponsored by klanana<br />
+<br />
+Visit her servers:<br />
+Jump iT! - 64.74.97.15:27015<br />
+JuJump iT! - 74.91.113.66:27015 ** Beginner Jump Maps **<br />
+Surf iT! - 216.52.143.76:27015<br />
+Surf iT! - EU - 31.186.250.220:27015<br />
+SuSurf iT! - 66.151.244.243:27015  ** Beginner Surf Maps **<br />
+Bball iT! - 74.91.113.9:27015<br />
+MGE iT! - 74.91.122.39:27015 ** Stats: TF2Jump.com/MGE **
+		</div>
+		<div class="spacer"></div>
+		<div id="profile-content">
+			<div class="sub-header bold">Recent Competition Matches</div>
+			<br>
+			<div class="tabArea">
+
+
+				<a class="tab activeTab" href="/teams/69987?competition=league">League</a>
+
+
+				<a class="tab" href="/teams/69987?competition=scrim">Scrim</a>
+
+
+				<div class="spacer"></div>
+			</div>
+
+
+			<div class="tabContent">
+
+	
+				<table width="100%" cellspacing="0" border="0">
+					<tr class="row1">
+						<th align="left"></th>
+						<th align="left">Home</th>
+						<th align="left">Away</th>
+						<th align="right">Map</th>
+						<th align="right">Result</th>
+						<th align="right">Score</th>
+						<th align="right">Date</th>
+					</tr>
+
+		
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/65208">6cuties</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_granary</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3471970">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3471970">0-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3471970">Oct 17 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/46944">WELOVELANIME</a></td>
+						<td align="right">cp_gullywash_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3476984">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3476984">5-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3476984">Oct 22 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/77431">lost in translation</a></td>
+						<td align="right">cp_gullywash_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3475173">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3475173">5-1</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3475173">Oct 25 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/69988">Show Me the Monet</a></td>
+						<td align="right">cp_badlands</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3481446">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3481446">5-1</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3481446">Oct 31 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/61034">THRILL SIX MAFIA</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_badlands</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3483256">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3483256">1-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3483256">Nov 4 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/62102">Where is SureShot</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">koth_coalplant_b2</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3487800">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3487800">0-4</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3487800">Nov 7 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/51672">Classic Mixup</a></td>
+						<td align="right">koth_coalplant_b2</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3488991">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3488991">4-1</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3488991">Nov 8 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/77215">No Exceptions</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_metalworks_rc5</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3493220">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3493220">0-2</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3493220">Nov 12 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/51672">Classic Mixup</a></td>
+						<td align="right">cp_metalworks_rc5</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3494744">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3494744">5-4</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3494744">Nov 15 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/65208">6cuties</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_process_final</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3500216">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3500216">1-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3500216">Nov 20 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/77215">No Exceptions</a></td>
+						<td align="right">koth_pro_viaduct_rc4</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3505535">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3505535">2-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3505535">Nov 28 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/77431">lost in translation</a></td>
+						<td align="right">koth_pro_viaduct_rc4</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3504065">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3504065">4-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3504065">Nov 28 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/46944">WELOVELANIME</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_snakewater_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3509258">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3509258">0-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3509258">Dec 3 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/62102">Where is SureShot</a></td>
+						<td align="right">cp_snakewater_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3510727">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3510727">2-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3510727">Dec 6 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69988">Show Me the Monet</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_granary</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3514223">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3514223">0-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3514223">Dec 12 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/61034">THRILL SIX MAFIA</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_granary</td>
+
+	
+						<td align="right" colspan="2"><a href="/index.php?s=stats&d=match&id=3515802">Upcoming</a> (1)</td>
+
+		
+						<td align="right">
+
+		
+							<a href="/index.php?s=stats&d=match&id=3515802">Dec 12 13</a>
+
+		
+						</td>
+
+	
+					</tr>
+
+
+
+		
+
+		
+				</table>
+
+	
+			</div>
+
+
+			<div class="tabContent hidden">
+
+	
+				<table width="100%" cellspacing="0" border="0">
+					<tr class="row1">
+						<th align="left"></th>
+						<th align="left">Home</th>
+						<th align="left">Away</th>
+						<th align="right">Map</th>
+						<th align="right">Result</th>
+						<th align="right">Score</th>
+						<th align="right">Date</th>
+						<th align="right"></th>
+					</tr>
+
+		
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/65208">6cuties</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_granary</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3471970">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3471970">0-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3471970">Oct 17 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/46944">WELOVELANIME</a></td>
+						<td align="right">cp_gullywash_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3476984">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3476984">5-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3476984">Oct 22 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/77431">lost in translation</a></td>
+						<td align="right">cp_gullywash_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3475173">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3475173">5-1</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3475173">Oct 25 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/69988">Show Me the Monet</a></td>
+						<td align="right">cp_badlands</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3481446">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3481446">5-1</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3481446">Oct 31 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/61034">THRILL SIX MAFIA</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_badlands</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3483256">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3483256">1-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3483256">Nov 4 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/62102">Where is SureShot</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">koth_coalplant_b2</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3487800">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3487800">0-4</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3487800">Nov 7 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/51672">Classic Mixup</a></td>
+						<td align="right">koth_coalplant_b2</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3488991">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3488991">4-1</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3488991">Nov 8 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/77215">No Exceptions</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_metalworks_rc5</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3493220">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3493220">0-2</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3493220">Nov 12 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/51672">Classic Mixup</a></td>
+						<td align="right">cp_metalworks_rc5</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3494744">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3494744">5-4</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3494744">Nov 15 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/65208">6cuties</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_process_final</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3500216">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3500216">1-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3500216">Nov 20 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/77215">No Exceptions</a></td>
+						<td align="right">koth_pro_viaduct_rc4</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3505535">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3505535">2-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3505535">Nov 28 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/77431">lost in translation</a></td>
+						<td align="right">koth_pro_viaduct_rc4</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3504065">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3504065">4-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3504065">Nov 28 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/46944">WELOVELANIME</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_snakewater_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3509258">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3509258">0-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3509258">Dec 3 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69987">iT</a></td>
+						<td><a href="/teams/62102">Where is SureShot</a></td>
+						<td align="right">cp_snakewater_final1</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3510727">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3510727">2-0</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3510727">Dec 6 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/69988">Show Me the Monet</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_granary</td>
+
+	
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3514223">Win</a></td>
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3514223">0-5</a></td>
+
+		
+						<td align="right"><a href="/index.php?s=stats&d=match&id=3514223">Dec 12 13</a></td>
+
+	
+					</tr>
+
+
+					<tr class="row1">
+						<td><img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/game_icons/43.gif" alt="Team Fortress 2" title="Team Fortress 2"></td>
+
+	
+						<td><a href="/teams/61034">THRILL SIX MAFIA</a></td>
+						<td><a href="/teams/69987">iT</a></td>
+						<td align="right">cp_granary</td>
+
+	
+						<td align="right" colspan="2"><a href="/index.php?s=stats&d=match&id=3515802">Upcoming</a> (1)</td>
+
+		
+						<td align="right">
+
+		
+							<a href="/index.php?s=stats&d=match&id=3515802">Dec 12 13</a>
+
+		
+						</td>
+
+	
+					</tr>
+
+
+
+		
+				</table>
+				<br>
+				<span class="right"><b>»</b> <a href="/index.php?s=search&source=matches&filters[teams]=iT"><b>Search</b> for more matches</a></span>
+				
+
+	
+			</div>
+
+
+		</div>
+		<div class="spacer"></div>
+	</div>
+	<div class="content-div"></div>			</div>
+			<div id="layout-column-right">
+				<div class="layout-home">
+
+
+					<div class="module" id="module-premium-checklist">
+	<div class="checklist">
+		<h1 class="">
+			<a href="/index.php?s=upanel&d=register">Create an account</a>
+			<span>Or sign in to your existing account at the top of the page</span>
+		</h1>
+		<h1 class="">
+			<a href="/premium">Subscribe to Premium</a>
+			<span>Compete against the best players in a cheat-free environment and win prizes</span>
+		</h1>
+		<h1 class="">
+			<a class="pagelet-ignore" href="/index.php?s=downloads&d=download&id=1">Download the ESEA Client, get setup</a>
+			<span>The Client protects our game servers from cheaters, and also functions as a server browser, demo viewer, Mumble client and more</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=support&d=faq&id=136">Play a Pick Up Game (PUG)</a>
+			<span>Play Counter-Strike 1.6, Counter-Strike: Source, and Team Fortress 2 with the pros in our PUG servers while learning and practicing the competitive format</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=upanel&d=manage&tab=profile">Fill out your profile</a>
+			<span>Tell the community a little bit about yourself</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=forums">Post a comment in the forums</a>
+			<span>Our forums are a source of non-stop 24 hour discussion and are always a good place for tips or for a laugh</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=support&d=faq&id=14">Affect another user's Karma</a>
+			<span>Learn about the Karma system and affect another user's Karma -- it's one of the ways the community polices itself</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=downloads&d=cotw">Rate a Clip Of The Week video</a>
+			<span>Check out all of the best CS 1.6, CS: Source, and TF2 user submitted frag movies of the week and tell us what you think</span>
+		</h1>
+		<h1>
+			<a href="/index.php?s=premium&d=checklist_complete">Complete the list, Get free stuff</a>
+			<span>When you've completed the list, we'll get you started with free ESEA Points and Karma</span>
+		</h1>
+
+			</div>
+</div>
+
+
+				</div>
+				<div class="layout-standard">
+
+
+				<div class="module" id="module-premium-checklist">
+	<div class="checklist">
+		<h1 class="">
+			<a href="/index.php?s=upanel&d=register">Create an account</a>
+			<span>Or sign in to your existing account at the top of the page</span>
+		</h1>
+		<h1 class="">
+			<a href="/premium">Subscribe to Premium</a>
+			<span>Compete against the best players in a cheat-free environment and win prizes</span>
+		</h1>
+		<h1 class="">
+			<a class="pagelet-ignore" href="/index.php?s=downloads&d=download&id=1">Download the ESEA Client, get setup</a>
+			<span>The Client protects our game servers from cheaters, and also functions as a server browser, demo viewer, Mumble client and more</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=support&d=faq&id=136">Play a Pick Up Game (PUG)</a>
+			<span>Play Counter-Strike 1.6, Counter-Strike: Source, and Team Fortress 2 with the pros in our PUG servers while learning and practicing the competitive format</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=upanel&d=manage&tab=profile">Fill out your profile</a>
+			<span>Tell the community a little bit about yourself</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=forums">Post a comment in the forums</a>
+			<span>Our forums are a source of non-stop 24 hour discussion and are always a good place for tips or for a laugh</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=support&d=faq&id=14">Affect another user's Karma</a>
+			<span>Learn about the Karma system and affect another user's Karma -- it's one of the ways the community polices itself</span>
+		</h1>
+		<h1 class="">
+			<a href="/index.php?s=downloads&d=cotw">Rate a Clip Of The Week video</a>
+			<span>Check out all of the best CS 1.6, CS: Source, and TF2 user submitted frag movies of the week and tell us what you think</span>
+		</h1>
+		<h1>
+			<a href="/index.php?s=premium&d=checklist_complete">Complete the list, Get free stuff</a>
+			<span>When you've completed the list, we'll get you started with free ESEA Points and Karma</span>
+		</h1>
+
+			</div>
+</div>
+
+
+				</div>
+			</div>
+			<div class="spacer"></div>
+		</div>
+		<div id="layout-footer-container">
+			<div id="layout-footer-content">
+				<img src="https://d1fj4sro0cm5nu.cloudfront.net/premium/images/logo_esea_footer.png">
+				<span class="left">
+					Copyright © 2003-2013 <b>E-Sports Entertainment LLC</b><br>
+					<a href="/index.php?s=support">Support</a> | <a href="/index.php?s=content&d=terms_of_use">Terms of Use</a> | <a href="/index.php?s=content&d=terms_of_sale">Terms of Sale</a> | <a href="/index.php?s=content&d=privacy_policy">Privacy Policy</a> | <a href="/index.php?s=content&d=dmca">DMCA Policy</a><br>
+					Rendered in 0.10745 seconds, 11 total queries
+				</span>
+				<span class="right">As far as I&#039;m concerned, I&#039;d probably be considered &quot;in the lead&quot; in the *race to be considered the top Canadian CS player*, having achieved 2nd place at the recent CPL while bl00d and steel didn&#039;t even break the top 12.<br>-- shaGuar on the best Canadian player</span>
+				<div class="spacer"></div>
+			</div>
+		</div>
+		<br>
+		<div id="ajax-status" style="display: none;"></div>
+		<div id="fade" style="display: none;"></div>
+		<div id="popup" style="display: none;">
+			<div class="content">
+				<div class="sub-header bold margin-bottom">Select Your Games</div>
+
+
+				Once you've got an account and are logged in, you can use this area to select what games you want displayed when you visit ESEA.<br><br>
+				<input type="submit" value="Close" onclick="$('#popup').hide(); $('#fade').hide(); return false;">
+
+
+			</div>
+		</div>
+		<iframe id="form_target" name="form_target"></iframe>
+
+
+
+		<a name="bottom"></a>
+
+
+
+		<script type="text/javascript">
+			_qevents.push([
+				{qacct:"p-48dad167ZHj9E"},
+				{qacct:"p-99TeGITExdEz-"}
+			]);
+		</script>
+
+
+
+	</body>
+</html>
