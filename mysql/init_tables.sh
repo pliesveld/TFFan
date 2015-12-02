@@ -24,4 +24,3 @@ echo "$(eval date): init tables" > ${OUTPUT}
 
 exec_mysql usertable.sql
 exec_mysql rostertable.sql
-exec_mysql sample_team.sql
