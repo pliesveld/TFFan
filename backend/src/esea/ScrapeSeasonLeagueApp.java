@@ -1,18 +1,16 @@
-import java.io.*;
-import java.text.ParseException;
-import java.util.*;
-import java.util.regex.*;
+package esea;
 
-import org.jsoup.*;
+import esea.scrape.ScrapeESEALeagueDivisions;
+import esea.scrape.ScrapeException;
+import esea.scrape.ScrapePage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import esea.EseaDivision;
-import esea.EseaTeam;
-import esea.scrape.ScrapeESEALeagueDivisions;
-import esea.scrape.ScrapeException;
-import esea.scrape.ScrapePage;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ScrapeSeasonLeagueApp
 {
@@ -37,9 +35,8 @@ public class ScrapeSeasonLeagueApp
 			return;
 
 
-		//		System.out.println("Season: " + m.group("season"));
-		//		System.out.println("Start date: " + m.group("startdate"));
-		//		System.out.println("End date: " + m.group("enddate"));
+
+		
 
 		java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("MMM d, yyyy");
 		try {
@@ -48,6 +45,13 @@ public class ScrapeSeasonLeagueApp
 
 			Date dateToday = new Date();
 
+			System.out.println("Today: " + dateToday);
+			System.out.println("Season: " + m.group("season"));
+			System.out.println("Season Start: " + dateStart);
+			System.out.println("Season End: " + dateEnd);
+
+			
+			
 			if(dateStart.after(dateToday))
 			{
 				System.out.println("Season hasn't started yet.");
@@ -60,7 +64,7 @@ public class ScrapeSeasonLeagueApp
 				{
 					assert(e.hasText() && e.hasAttr("value"));
 					Game league_game = Game.parse(e.ownText());
-				//	System.out.print("League: " + league_game);
+					System.out.print("League: " + league_game);
 					String div_id = e.attr("value");
 					
 					Document div_doc = ScrapeESEALeagueDivisions.fetch(div_id);

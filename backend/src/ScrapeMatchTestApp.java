@@ -37,12 +37,19 @@ public class ScrapeMatchTestApp {
 			try {
 				Document doc = ScrapePage.open_file(file);
 
+                if (doc == null)
+                {
+                    System.err.println("Invalid file to parse: " + file);
+                } else {
+                    System.out.println("Prasing file: " + file.getName());
+                }
 				ScrapeESEAMatch page = new ScrapeESEAMatch();
 				String fName = file.getName();
 				fName = fName.substring(0,fName.indexOf('.'));
 				EseaMatch teams = page.parse(doc);
-				if(teams != null)
-					db_store.insertMatch(teams);
+				if(teams != null) {
+                    db_store.insertMatch(teams);
+                }
 			} catch(ScrapeException e) {
 				System.err.println(e.getMessage());
 			}

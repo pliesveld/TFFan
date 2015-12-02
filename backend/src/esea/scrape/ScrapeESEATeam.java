@@ -157,8 +157,8 @@ public class ScrapeESEATeam {
 
 		Elements dead_check = profile_info.select("div > span");
 
-		team_name = ScrapeUtility.validateSingleSelect(doc, "#profile-header > h1");
-		league_name = ScrapeUtility.validateSingleSelect(doc,"div#profile-info div.content div.data ~ label.margin-top:contains(League:) + div a");
+		team_name = ScrapeUtility.validateSelect(doc, "#profile-header > h1").first();
+		league_name = ScrapeUtility.validateSelect(doc,"div#profile-info div.content div.data ~ label.margin-top:contains(League:) + div a").first();
 
 
 		if(dead_check.size() > 0 && dead_check.first().ownText().matches("Dead"))

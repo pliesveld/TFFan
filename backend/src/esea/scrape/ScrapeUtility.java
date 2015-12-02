@@ -55,7 +55,7 @@ public class ScrapeUtility {
 		}
 	}
 	
-	static Elements validateSelect(Elements e, String cssQuerry) throws ScrapeException
+	static <T extends org.jsoup.nodes.Element> Elements validateSelect(T e, String cssQuerry) throws ScrapeException
 	{
 		Elements result;
 		if((result = e.select(cssQuerry)) == null || result.size() == 0)
